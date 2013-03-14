@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Definitions for validation -->
+<!DOCTYPE Config [ 
+  <!ELEMENT Config  (site*)> 
+  <!ELEMENT site (name,url)> 
+  <!ELEMENT name (#PCDATA)> 
+  <!ELEMENT url  (#PCDATA)> 
+]> 
+<Config>
+    <site>
+        <name>Ansa</name>
+        <url>http://www.ansa.it/main/notizie/awnplus/topnews/synd/ansait_awnplus_topnews_medsynd_Today_Idx.xml</url>
+    </site>
+    <site>
+        <name>AndroidWorld</name>
+        <url>http://www.androidworld.it/rss</url>
+    </site>
+    <site>
+        <name>Androidiani</name>
+        <url>http://feeds.feedburner.com/Androidiani</url>
+    </site>
+    <site>
+        <name>Tomshw.it</name>
+        <url>http://rss.feedsportal.com/c/32604/f/531080/index.rss</url>
+    </site>
+</Config>
