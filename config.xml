@@ -27,4 +27,12 @@
         <name>hwupgrade</name>
         <url>http://feeds.hwupgrade.it/rss_hwup.xml</url>
     </site>
+    <site>
+        <name>torrent</name>
+        <url>http://www.nyaa.eu/?page=rss&#38;term=dragonball</url>
+    </site>
+    <site>
+        <name>python</name>
+        <url>http://www.python.org/channews.rdf</url>
+    </site>
 </Config>
