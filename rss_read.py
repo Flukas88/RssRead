@@ -36,7 +36,7 @@ def loadConf():
 def loadNewsRss(site):
         d = feedparser.parse(siteConf[site])
         for news in d.entries:
-            print (news.title, '\n\t', '[ fonte: ', news.link, ']\n -- --\n')
+            print (news.title.encode('utf-8'), '\n', '[ fonte: ', news.link, ']\n -- --\n')
 
 
 def main():
@@ -50,6 +50,8 @@ def main():
             print (arg, '\n+-+-+')
     except KeyError:
         print ('Nome sito non valido!')
+    except UnicodeEncodeError:
+        print('Errore Unicode')
 
 
 if __name__ == '__main__':
