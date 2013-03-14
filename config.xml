@@ -20,7 +20,11 @@
         <url>http://feeds.feedburner.com/Androidiani</url>
     </site>
     <site>
-        <name>Tomshw.it</name>
-        <url>http://rss.feedsportal.com/c/32604/f/531080/index.rss</url>
+        <name>slashdot</name>
+        <url>http://rss.slashdot.org/Slashdot/slashdot</url>
+    </site>
+    <site>
+        <name>hwupgrade</name>
+        <url>http://feeds.hwupgrade.it/rss_hwup.xml</url>
     </site>
 </Config>
