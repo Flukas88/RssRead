@@ -27,8 +27,7 @@ siteConf = {}
 
 
 def loadConf():
-    fileName = 'config.xml'
-    tree = etree.parse(fileName)
+    tree = etree.parse('config.xml')
     root = tree.getroot()
     for child in root:
         siteConf[child.find('name').text] = child.find('url').text
@@ -45,9 +44,8 @@ def main():
     try:
         loadNewsRss(sys.argv[1])
     except IndexError:
-        print ('Non hai definito nessuna sorgente RSS!!\n')
-        print ('Siti validi')
-        print ('======')
+        print ('Non hai definito nessuna sorgente RSS!!\n \
+                ====== Siti validi ====== ')
         for arg in siteConf:
             print (arg, '\n+-+-+')
     except KeyError:
