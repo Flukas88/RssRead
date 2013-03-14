@@ -1,4 +1,4 @@
 RssRead
 =======
 
-RssRead repo
+Repo for RssRead, an esperimental rss reader. 
