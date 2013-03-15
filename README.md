@@ -18,7 +18,7 @@ And the you can have fun
     
     
 In NAME you can use any of the configured site.
-Use the news object bearing in mind that it's already in a '<a href="LINK">TITLE</a><br />' format.
+Use the news object bearing in mind that it's already in a \'\<a href="LINK"\>TITLE\</a\>\<br /\>' format.
 
 And you can add/remove sites with the addSite()/removeSite() methods
 
