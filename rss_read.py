@@ -27,7 +27,8 @@ class RssRead:
     def __init__(self, fileName='config.xml'):
         self.fileName = fileName
         self.siteConf = {}
-        self.NewsDict = {}
+        self.NewsFeed = []
+        self.news = []
         self.tree = etree.parse(fileName)
         self.Config = self.tree.getroot()
 
@@ -41,11 +42,13 @@ class RssRead:
         self.feed = feedparser.parse(self.siteConf[site],
                                      agent='RssRead/0.1 +http://ciscoland.eu/')
         for news in self.feed.entries:
-            self.NewsDict[news.title.encode('utf-8')] = news.link
+            newsStr = '<b>' + news.title + '<a href="' + news.link + '"></a></b><br />'
+            newsStr = newsStr.encode('utf-8')
+            self.news.append(newsStr)
 
-    def getNews(self):
+    def getNews(self, site):
         """News getting method"""
-        pass
+        return self.news
 
     def addSite(self, name, url):
         """Configuration site adding method"""
@@ -67,9 +70,9 @@ class RssRead:
 def main():
     rss = RssRead()
     rss.loadConf()
-    rss.removeSite('io')
-    rss.removeSite('Not')
-    print repr(RssRead.__doc__)
+    rss.loadNewsRss('Ansa')
+    news = rss.getNews('Ansa')
+    print news
 
 
 if __name__ == '__main__':
