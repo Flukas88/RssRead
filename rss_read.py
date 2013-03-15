@@ -42,7 +42,7 @@ class RssRead:
         self.feed = feedparser.parse(self.siteConf[site],
                                      agent='RssRead/0.1 +http://ciscoland.eu/')
         for news in self.feed.entries:
-            newsStr = '<b>' + news.title + '<a href="' + news.link + '"></a></b><br />'
+            newsStr = '<b><a href="' + news.link + '">' + news.title + '</a></b><br />'
             newsStr = newsStr.encode('utf-8')
             self.news.append(newsStr)
 
@@ -71,8 +71,8 @@ def main():
     rss = RssRead()
     rss.loadConf()
     rss.loadNewsRss('Ansa')
-    news = rss.getNews('Ansa')
-    print news
+    for new in rss.getNews('Ansa'):
+        print new
 
 
 if __name__ == '__main__':
