@@ -27,11 +27,11 @@ class RssRead:
     def __init__(self):
         self.siteConf = {}
         self.NewsDict = {}
+        self.tree = etree.parse('config.xml')
+        self.Config = self.tree.getroot()
 
     """Configuration loading method"""
     def loadConf(self):
-        self.tree = etree.parse('config.xml')
-        self.Config = self.tree.getroot()
         for child in self.Config:
             self.siteConf[child.find('name').text] = child.find('url').text
 
@@ -46,7 +46,7 @@ class RssRead:
     def getNews(self):
         pass
 
-    """Configuration site adding  method"""
+    """Configuration site adding method"""
     def addSite(self, name, url):
         Site = self.tree.SubElement(self.Config, 'site')
         self.tree.SubElement(Site, 'name').text = name
@@ -67,19 +67,6 @@ def main():
     rss = RssRead()
     rss.loadConf()
     rss.addSite('io', 'tu')  # problema
-    try:
-        pass
-        # rss.loadNewsRss('Ansa')
-        # print rss.NewsDict
-    except IndexError:
-        print ('Non hai definito nessuna sorgente RSS!!\n \
-                ====== Siti validi ====== ')
-        for arg in rss.siteConf:
-            print (arg, '\n+-+-+')
-    except KeyError:
-        print ('Nome sito non valido!')
-    except UnicodeEncodeError:
-        print('Errore Unicode')
 
 
 if __name__ == '__main__':
