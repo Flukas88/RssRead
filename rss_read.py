@@ -39,6 +39,24 @@ def loadNewsRss(site):
             print (news.title.encode('utf-8'), '\n', '[ fonte: ', news.link, ']\n -- --\n')
 
 
+def addSite(name, url):
+    root = etree.parse('config.xml')
+    Config = root.getroot()
+    Site = etree.SubElement(Config, 'site')
+    etree.SubElement(Site, 'name').text = name
+    etree.SubElement(Site, 'url').text = url
+    root.write('config.xml', encoding='utf-8')
+
+
+def removeSite(site):
+    root = etree.parse('config.xml')
+    Config = root.getroot()
+    for Site in Config.findall('site'):
+        if Site.find('name').text == site:
+            Config.remove(Site)
+    root.write('config.xml', encoding='utf-8')
+
+
 def main():
     loadConf()
     try:
