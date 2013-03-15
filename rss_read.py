@@ -23,7 +23,7 @@ import xml.etree.cElementTree as etree
 
 
 class RssRead:
-    """RssRead main method"""
+    """RssRead is a class meant to read Rss/Atom feed and export them to the world"""
     def __init__(self, fileName='config.xml'):
         self.fileName = fileName
         self.siteConf = {}
@@ -31,31 +31,31 @@ class RssRead:
         self.tree = etree.parse(fileName)
         self.Config = self.tree.getroot()
 
-    """Configuration loading method"""
     def loadConf(self):
+        """Configuration loading method"""
         for child in self.Config:
             self.siteConf[child.find('name').text] = child.find('url').text
 
-    """News loading method"""
     def loadNewsRss(self, site):
+        """News loading method"""
         self.feed = feedparser.parse(self.siteConf[site],
                                      agent='RssRead/0.1 +http://ciscoland.eu/')
         for news in self.feed.entries:
             self.NewsDict[news.title.encode('utf-8')] = news.link
 
-    """News getting method"""
     def getNews(self):
+        """News getting method"""
         pass
 
-    """Configuration site adding method"""
     def addSite(self, name, url):
+        """Configuration site adding method"""
         Site = etree.SubElement(self.Config, 'site')
         etree.SubElement(Site, 'name').text = name
         etree.SubElement(Site, 'url').text = url
         self.tree.write(self.fileName, encoding='utf-8')
 
-    """Configuration site removing  method"""
     def removeSite(self, site):
+        """Configuration site removing  method"""
         for Site in self.Config.findall('site'):
             if Site.find('name').text == site:
                 self.Config.remove(Site)
@@ -67,9 +67,9 @@ class RssRead:
 def main():
     rss = RssRead()
     rss.loadConf()
-    rss.addSite('io', 'tu')
-    rss.addSite('Not', 'ju')
     rss.removeSite('io')
+    rss.removeSite('Not')
+    print repr(RssRead.__doc__)
 
 
 if __name__ == '__main__':
