@@ -24,10 +24,11 @@ import xml.etree.cElementTree as etree
 
 class RssRead:
     """RssRead main method"""
-    def __init__(self):
+    def __init__(self, fileName='config.xml'):
+        self.fileName = fileName
         self.siteConf = {}
         self.NewsDict = {}
-        self.tree = etree.parse('config.xml')
+        self.tree = etree.parse(fileName)
         self.Config = self.tree.getroot()
 
     """Configuration loading method"""
@@ -48,17 +49,17 @@ class RssRead:
 
     """Configuration site adding method"""
     def addSite(self, name, url):
-        Site = self.tree.SubElement(self.Config, 'site')
-        self.tree.SubElement(Site, 'name').text = name
-        self.tree.SubElement(Site, 'url').text = url
-        self.tree.write('config.xml', encoding='utf-8')
+        Site = etree.SubElement(self.Config, 'site')
+        etree.SubElement(Site, 'name').text = name
+        etree.SubElement(Site, 'url').text = url
+        self.tree.write(self.fileName, encoding='utf-8')
 
     """Configuration site removing  method"""
     def removeSite(self, site):
         for Site in self.Config.findall('site'):
             if Site.find('name').text == site:
                 self.Config.remove(Site)
-        self.tree.write('config.xml', encoding='utf-8')
+        self.tree.write(self.fileName, encoding='utf-8')
 
 # Testing
 
@@ -66,7 +67,9 @@ class RssRead:
 def main():
     rss = RssRead()
     rss.loadConf()
-    rss.addSite('io', 'tu')  # problema
+    rss.addSite('io', 'tu')
+    rss.addSite('Not', 'ju')
+    rss.removeSite('io')
 
 
 if __name__ == '__main__':
