@@ -34,7 +34,7 @@ def loadConf():
 
 
 def loadNewsRss(site):
-        d = feedparser.parse(siteConf[site])
+        d = feedparser.parse(siteConf[site], agent='RssRead/0.1 +http://ciscoland.eu/')
         for news in d.entries:
             print (news.title.encode('utf-8'), '\n', '[ fonte: ', news.link, ']\n -- --\n')
 
