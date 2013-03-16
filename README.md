@@ -32,8 +32,8 @@ Use the News object bearing in mind that it's already in a Xthml Link format.
 
 *You can add/remove sites you con use the following syntax
 
-    rss + ['sito', 'url']
-    rss - 'sito'
+    rss += 'sito', 'url'
+    rss -= 'sito'
     
 
 Enjoy :)
