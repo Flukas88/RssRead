@@ -5,6 +5,7 @@ RssRead
      - Refactoring Python Style and more simple API
     Version 0.11
      - Using C implementation of Xml parser
+     - Extern DTD for the xml config file
     Version 0.1
      - Initial use of Python class
 
