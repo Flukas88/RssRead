@@ -43,7 +43,8 @@ class RssRead:
         self._news = list('<a href="' + news.link.encode('utf-8') + '">' + news.title.encode('utf-8') + '</a><br />'
                           for news in self.feed.entries)
 
-    def getNews(self):
+    @property
+    def News(self):
         """News getting method.
         """
         return self._news
