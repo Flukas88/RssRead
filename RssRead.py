@@ -30,9 +30,9 @@ class RssRead:
         self._news = []
         self._tree = etree.parse(self._fileName)
         self._Config = self._tree.getroot()
-        self.loadConf()
+        self._loadConf()
 
-    def loadConf(self):
+    def _loadConf(self):
         """Configuration loading method"""
         self._siteConf = dict((child.find('name').text, child.find('url').text)
                               for child in self._Config)
@@ -54,7 +54,7 @@ class RssRead:
         etree.SubElement(Site, 'name').text = name
         etree.SubElement(Site, 'url').text = url
         self._tree.write(self._fileName, encoding='utf-8')
-        self.loadConf()
+        self._loadConf()
 
     def _removeSite(self, site):
         """Configuration site removing method. Just give it the site name """
@@ -62,7 +62,7 @@ class RssRead:
             if Site.find('name').text == site:
                 self._Config.remove(Site)
         self._tree.write(self._fileName, encoding='utf-8')
-        self.loadConf()
+        self._loadConf()
 
     def __sub__(self, site):
         self._removeSite(site)
