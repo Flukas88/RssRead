@@ -13,7 +13,7 @@ and then
     rss = feed.RssRead() 
     rss.loadConf()
     rss.loadNewsRss(NAME)
-        for news in rss.getNews(NAME):
+        for news in rss.getNews():
             pass
  
 In NAME you can use any of the configured site.
