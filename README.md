@@ -15,7 +15,7 @@ It's a module you can use with a
 
     import RssRead as feed
 
-and then use the News peoperty to get the news
+and then use the News property to get the news
 
     rss = feed.RssRead() 
     rss.loadNewsRss(NAME)
