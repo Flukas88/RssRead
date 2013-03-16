@@ -48,16 +48,22 @@ class RssRead:
         """
         return self._news
 
-    def addSite(self, name, url):
+    def _addSite(self, name, url):
         """Configuration site adding method. The args are (name, url) """
         Site = etree.SubElement(self._Config, 'site')
         etree.SubElement(Site, 'name').text = name
         etree.SubElement(Site, 'url').text = url
         self._tree.write(self._fileName, encoding='utf-8')
 
-    def removeSite(self, site):
+    def _removeSite(self, site):
         """Configuration site removing method. Just give it the site name """
         for Site in self._Config.findall('site'):
             if Site.find('name').text == site:
                 self._Config.remove(Site)
         self._tree.write(self._fileName, encoding='utf-8')
+
+    def __sub__(self, site):
+        self._removeSite(site)
+
+    def __add__(self, cnf):
+        self._addSite(cnf[0], cnf[1])
