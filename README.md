@@ -8,12 +8,12 @@ It's a module you can use with a
 
     import RssRead as feed
 
-and then
+and then use the News peoperty to get the news
 
     rss = feed.RssRead() 
     rss.loadConf()
     rss.loadNewsRss(NAME)
-        for news in rss.getNews():
+        for news in rss.News:
             pass
  
 In NAME you can use any of the configured site.
