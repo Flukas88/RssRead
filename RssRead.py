@@ -23,50 +23,41 @@ import xml.etree.cElementTree as etree
 
 
 class RssRead:
-    """RssRead is a class meant to read Rss/Atom feed and export them to the world
-    You can leave the default config file or pass it a customized one.
-    """
+    """ Default config.xml or pass it a customized one as parameter. """
     def __init__(self, fileName='config.xml'):
-        self.fileName = fileName
-        self.siteConf = {}
-        self.NewsFeed = []
-        self.news = []
-        self.tree = etree.parse(fileName)
-        self.Config = self.tree.getroot()
+        self._fileName = fileName
+        self._siteConf = {}
+        self._news = []
+        self._tree = etree.parse(self._fileName)
+        self._Config = self._tree.getroot()
 
     def loadConf(self):
         """Configuration loading method (first call of the class)"""
-        self.siteConf = dict((child.find('name').text, child.find('url').text)
-                             for child in self.Config)
+        self._siteConf = dict((child.find('name').text, child.find('url').text)
+                              for child in self._Config)
 
     def loadNewsRss(self, site):
-        """News loading method and formatting it in xhtml.\nIt *must* be followed by getNews()
-        You pass the function the site you want the news from
-        """
-        self.feed = feedparser.parse(self.siteConf[site],
+        """It *must* be followed by getNews(). Args are site."""
+        self.feed = feedparser.parse(self._siteConf[site],
                                      agent='RssRead/0.11 +http://ciscoland.eu/')
-        self.news = list('<a href="' + news.link.encode('utf-8') + '">' + news.title.encode('utf-8') + '</a><br />'
-                         for news in self.feed.entries)
+        self._news = list('<a href="' + news.link.encode('utf-8') + '">' + news.title.encode('utf-8') + '</a><br />'
+                          for news in self.feed.entries)
 
     def getNews(self):
         """News getting method.
         """
-        return self.news
+        return self._news
 
     def addSite(self, name, url):
-        """Configuration site adding method
-        The args are (name, url)
-        """
-        Site = etree.SubElement(self.Config, 'site')
+        """Configuration site adding method. The args are (name, url) """
+        Site = etree.SubElement(self._Config, 'site')
         etree.SubElement(Site, 'name').text = name
         etree.SubElement(Site, 'url').text = url
-        self.tree.write(self.fileName, encoding='utf-8')
+        self._tree.write(self._fileName, encoding='utf-8')
 
     def removeSite(self, site):
-        """Configuration site removing method
-        Just give it the site name
-        """
-        for Site in self.Config.findall('site'):
+        """Configuration site removing method. Just give it the site name """
+        for Site in self._Config.findall('site'):
             if Site.find('name').text == site:
-                self.Config.remove(Site)
-        self.tree.write(self.fileName, encoding='utf-8')
+                self._Config.remove(Site)
+        self._tree.write(self._fileName, encoding='utf-8')
