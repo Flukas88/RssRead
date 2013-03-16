@@ -41,7 +41,7 @@ class RssRead:
         """News loading method and formatting it in xhtml.\nIt *must* be followed by getNews()"""
         self.feed = feedparser.parse(self.siteConf[site],
                                      agent='RssRead/0.11 +http://ciscoland.eu/')
-        self.news = list('<a href="' + news.link + '">' + news.title + '</a><br />'
+        self.news = list('<a href="' + news.link.encode('utf-8') + '">' + news.title.encode('utf-8') + '</a><br />'
                          for news in self.feed.entries)
 
     def getNews(self):
@@ -66,7 +66,7 @@ class RssRead:
 def main():
     rss = RssRead()
     rss.loadConf()
-    rss.loadNewsRss('slashdot')
+    rss.loadNewsRss('torrent')
     for new in rss.getNews():
         print new, '\n'
 
