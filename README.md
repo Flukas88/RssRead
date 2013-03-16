@@ -25,10 +25,8 @@ Use the News object bearing in mind that it's already in a Xthml Link format.
 
 *You can add/remove sites you con use the following syntax
 
-    rss = feed.RssRead()
-    rss.loadConf()
     rss + ['sito', 'url']
     rss - 'sito'
-
+    
 
 Enjoy :)
