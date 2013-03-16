@@ -11,11 +11,11 @@ class RegressionTest(unittest.TestCase):
         self.rss = feed.RssRead()
 
     def test1f(self):
-        self.assertNotEqual(self.rss._siteConf, {})
+        self.assertNotEqual(self.rss._siteConf, {}, 'Problems with configuration loading')
 
     def test2(self):
-        self.rss.loadNewsRss('hwupgrade')
-        self.assertNotEqual(self.rss.News, [])
+        self.rss.loadNewsRss('slashdot')
+        self.assertNotEqual(self.rss.News, [], 'Problems with rss loading')
 
 if __name__ == '__main__':
     unittest.main()
