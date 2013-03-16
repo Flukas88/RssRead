@@ -16,8 +16,8 @@ and then use the News peoperty to get the news
         for news in rss.News:
             pass
  
-In NAME you can use any of the configured site.\n
-You can, of course, use multiple RssReader on the same program.\n
+In NAME you can use any of the configured site.
+You can, of course, use multiple RssReader on the same program.
 Or you can load more news with the same istance (using each time loadNewsRss())
 Use the news object bearing in mind that it's already in a xthml link format.
 
