@@ -67,8 +67,8 @@ class RssRead:
         self._tree.write(self._fileName, encoding='utf-8')
         del self._siteConf[site]
 
-    def __sub__(self, site):
+    def __isub__(self, site):
         self._removeSite(site)
 
-    def __add__(self, cnf):
+    def __iadd__(self, cnf):
         self._addSite(cnf[0], cnf[1])
