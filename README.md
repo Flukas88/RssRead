@@ -1,6 +1,13 @@
 RssRead
 =======
 
+    Version 0.2
+     - Refactoring Python Style and more simple API
+    Version 0.11
+     - Using C implementation of Xml parser
+    Version 0.1
+     - Initial use of Python class
+
 Repo for RssRead, an experimental rss reader. 
 [Python module feedparser is required.]
 
@@ -11,7 +18,6 @@ It's a module you can use with a
 and then use the News peoperty to get the news
 
     rss = feed.RssRead() 
-    rss.loadConf()
     rss.loadNewsRss(NAME)
         for news in rss.News:
             pass
