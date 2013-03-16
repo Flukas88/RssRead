@@ -57,6 +57,7 @@ class RssRead:
             etree.SubElement(Site, 'name').text = name
             etree.SubElement(Site, 'url').text = url
             self._tree.write(self._fileName, encoding='utf-8')
+            self._siteConf[name] = url
 
     def _removeSite(self, site):
         """Configuration site removing method. Just give it the site name """
