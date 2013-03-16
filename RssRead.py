@@ -15,7 +15,7 @@
 # along with this program.
 # If not, see <http://www.gnu.org/copyleft/lesser.html>.
 #
-# RssRead 0.11
+# RssRead 0.2
 # by Luca Francesca, 2013
 
 import feedparser
@@ -30,16 +30,17 @@ class RssRead:
         self._news = []
         self._tree = etree.parse(self._fileName)
         self._Config = self._tree.getroot()
+        self.loadConf()
 
     def loadConf(self):
-        """Configuration loading method (first call of the class)"""
+        """Configuration loading method"""
         self._siteConf = dict((child.find('name').text, child.find('url').text)
                               for child in self._Config)
 
     def loadNewsRss(self, site):
         """Load the news. You have to specify the site."""
         self.feed = feedparser.parse(self._siteConf[site],
-                                     agent='RssRead/0.11 +http://ciscoland.eu/')
+                                     agent='RssRead/0.2 +http://ciscoland.eu/')
         self._news = list('<a href="' + news.link.encode('utf-8') + '">' + news.title.encode('utf-8') + '</a><br />'
                           for news in self.feed.entries)
 
@@ -53,6 +54,7 @@ class RssRead:
         etree.SubElement(Site, 'name').text = name
         etree.SubElement(Site, 'url').text = url
         self._tree.write(self._fileName, encoding='utf-8')
+        self.loadConf()
 
     def _removeSite(self, site):
         """Configuration site removing method. Just give it the site name """
@@ -60,6 +62,7 @@ class RssRead:
             if Site.find('name').text == site:
                 self._Config.remove(Site)
         self._tree.write(self._fileName, encoding='utf-8')
+        self.loadConf()
 
     def __sub__(self, site):
         self._removeSite(site)
