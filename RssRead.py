@@ -39,7 +39,7 @@ class RssRead:
                                  for child in self.Config)
 
     def loadNewsRss(self, site):
-        """News loading method and formatting it in xhtml.\nIt *must* be followed by getNews() """
+        """News loading method and formatting it in xhtml.\nIt *must* be followed by getNews()"""
         self.feed = feedparser.parse(self.siteConf[site],
                                      agent='RssRead/0.11 +http://ciscoland.eu/')
         for news in self.feed.entries:
@@ -47,7 +47,7 @@ class RssRead:
             newsStr = newsStr.encode('utf-8')
             self.news.append(newsStr)
 
-    def getNews(self, site):
+    def getNews(self):
         """News getting method"""
         return self.news
 
@@ -70,9 +70,11 @@ def main():
     rss = RssRead()
     rss.loadConf()
     rss.loadNewsRss('slashdot')
-    for new in rss.getNews('slashdot'):
+    for new in rss.getNews():
         print new, '\n'
 
 
 if __name__ == '__main__':
     main()
+
+main()
