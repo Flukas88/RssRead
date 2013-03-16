@@ -34,18 +34,15 @@ class RssRead:
 
     def loadConf(self):
         """Configuration loading method (first call of the class)"""
-        for child in self.Config:
-            self.siteConf = dict((child.find('name').text, child.find('url').text)
-                                 for child in self.Config)
+        self.siteConf = dict((child.find('name').text, child.find('url').text)
+                             for child in self.Config)
 
     def loadNewsRss(self, site):
         """News loading method and formatting it in xhtml.\nIt *must* be followed by getNews()"""
         self.feed = feedparser.parse(self.siteConf[site],
                                      agent='RssRead/0.11 +http://ciscoland.eu/')
-        for news in self.feed.entries:
-            newsStr = '<a href="' + news.link + '">' + news.title + '</a><br />'
-            newsStr = newsStr.encode('utf-8')
-            self.news.append(newsStr)
+        self.news = list('<a href="' + news.link + '">' + news.title + '</a><br />'
+                         for news in self.feed.entries)
 
     def getNews(self):
         """News getting method"""
