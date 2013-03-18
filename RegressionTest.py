@@ -44,20 +44,20 @@ class RegressionTest(unittest.TestCase):
         self.rss += 'io', 'tu'
         try:
             self.rss += 'io', 'tu'
-        except TypeError:
+        except (TypeError, feed.SiteError):
             self.fail('Already present site exception thrown, expected')
 
     def test_remove_site(self):
         self.rss -= 'io'
         try:
             self.rss -= 'io'
-        except TypeError:
+        except (TypeError, feed.SiteError):
             self.fail('Already removed site exception thrown, expected')
 
     def test_present_site(self):
         try:
             self.rss.loadNewsRss('hwupgrade.it')
-        except feed.SiteError:
+        except (TypeError, feed.SiteError):
             self.fail('Site not present exception thrown, expected')
 
 
