@@ -9,7 +9,7 @@ RssRead
     Version 0.1
      - Initial use of Python class
 
-Repo for RssRead, an experimental rss reader. 
+Repo for RssRead, an experimental API for reading RSS( and Atom) . 
 [Python module feedparser is required.]
 
 It's a module you can use with a 
