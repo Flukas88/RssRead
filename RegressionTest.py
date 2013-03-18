@@ -48,8 +48,8 @@ class RegressionTest(unittest.TestCase):
             self.fail('Already present site exception thrown, expected')
 
     def test_remove_site(self):
+        self.rss -= 'io'
         try:
-            self.rss -= 'io'
             self.rss -= 'io'
         except TypeError:
             self.fail('Already removed site exception thrown, expected')
