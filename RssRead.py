@@ -42,8 +42,8 @@ class RssRead:
 
     def _loadConf(self):
         """Configuration loading method"""
-        self._siteConf = dict((child.find('name').text, child.find('url').text)
-                              for child in self._Config)
+        self._siteConf = self._siteConf = {child.find('name').text : child.find('url').text 
+                                           for child in self._Config}
 
     def loadNewsRss(self, site):
         """Load the news. You have to specify the site."""
