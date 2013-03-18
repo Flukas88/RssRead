@@ -43,15 +43,18 @@ class RegressionTest(unittest.TestCase):
     def test_add_site(self):
         try:
             self.rss += 'io', 'tu'
+            self.rss += 'io', 'tu'
         except TypeError:
-            self.fail('Already present site exception thrown')
+            self.fail('Already present site exception thrown, expected')
 
     def test_remove_site(self):
         try:
             self.rss -= 'io'
+            self.rss -= 'io'
         except TypeError:
-            self.fail('Already removed site exception thrown')
+            self.fail('Already removed site exception thrown, expected')
 
 
 if __name__ == '__main__':
     unittest.main()
+    
