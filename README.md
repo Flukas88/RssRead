@@ -19,9 +19,14 @@ It's a module you can use with a
 and then use the News property to get the news
 
     rss = feed.RssRead() 
-    rss.loadNewsRss(NAME)
-        for news in rss.News:
-            pass
+    
+    try:
+        rss.loadNewsRss(NAME)
+    except KeyError:
+        print 'Site not present!'
+        
+    for news in rss.News:
+        pass
  
 In NAME you can use any of the configured* site.
 You can, of course, use multiple RssReader on the same program.
