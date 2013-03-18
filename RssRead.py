@@ -22,6 +22,14 @@ import feedparser
 import xml.etree.cElementTree as etree
 
 
+class SiteError(Exception):
+    def __init__(self, value):
+        self.value = value
+
+    def __str__(self):
+        return repr(self.value)
+
+
 class RssRead:
     """ Default config.xml or pass it a customized one as parameter. """
     def __init__(self, fileName='config.xml'):
@@ -45,7 +53,7 @@ class RssRead:
             self._news = list('<a href="' + news.link.encode('utf-8') + '">' + news.title.encode('utf-8') + '</a><br />'
                               for news in self.feed.entries)
         else:
-            raise KeyError('Site not present')
+            raise SiteError('Site not present')
 
     @property
     def News(self):
