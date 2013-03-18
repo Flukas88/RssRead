@@ -62,7 +62,7 @@ class RssRead:
     def _addSite(self, name, url):
         """Configuration site adding method. The args are (name, url) """
         if name in self._siteConf:
-            raise TypeError('Site already present')
+            raise SiteError('Site already present')
         else:
             Site = etree.SubElement(self._Config, 'site')
             etree.SubElement(Site, 'name').text = name
@@ -79,7 +79,7 @@ class RssRead:
             self._tree.write(self._fileName, encoding='utf-8')
             del self._siteConf[site]
         else:
-            raise TypeError('Site already removed')
+            raise SiteError('Site already removed')
 
     def __isub__(self, site):
         self._removeSite(site)
