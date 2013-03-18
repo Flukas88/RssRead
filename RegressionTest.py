@@ -57,7 +57,7 @@ class RegressionTest(unittest.TestCase):
     def test_present_site(self):
         try:
             self.rss.loadNewsRss('hwupgrade.it')
-        except KeyError:
+        except feed.SiteError:
             self.fail('Site not present exception thrown, expected')
 
 
