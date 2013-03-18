@@ -31,7 +31,7 @@ class RegressionTest(unittest.TestCase):
         self.assertNotEqual(self.rss._siteConf, {}, 'Problems with configuration loading')
 
     def test_loading(self):
-        self.rss.loadNewsRss('torrent')
+        self.rss.loadNewsRss('python')
         self.assertNotEqual(self.rss.News, [], 'Problems with rss loading')
 
     def test_unicode_except(self):
@@ -54,7 +54,12 @@ class RegressionTest(unittest.TestCase):
         except TypeError:
             self.fail('Already removed site exception thrown, expected')
 
+    def test_present_site(self):
+        try:
+            self.rss.loadNewsRss('hwupgrade.it')
+        except KeyError:
+            self.fail('Site not present exception thrown, expected')
+
 
 if __name__ == '__main__':
     unittest.main()
-    
