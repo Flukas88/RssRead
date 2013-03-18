@@ -41,8 +41,8 @@ class RegressionTest(unittest.TestCase):
             self.fail('Unicode Error thrown')
 
     def test_add_site(self):
+        self.rss += 'io', 'tu'
         try:
-            self.rss += 'io', 'tu'
             self.rss += 'io', 'tu'
         except TypeError:
             self.fail('Already present site exception thrown, expected')
