@@ -67,7 +67,7 @@ class RssRead:
             Site = etree.SubElement(self._Config, 'site')
             etree.SubElement(Site, 'name').text = name
             etree.SubElement(Site, 'url').text = url
-            self._tree.write(self._fileName, encoding='utf-8')
+            self._tree.write(self._fileName, encoding='utf-8', xml_declaration=True)
             self._siteConf[name] = url
 
     def _removeSite(self, site):
@@ -76,7 +76,7 @@ class RssRead:
             for Site in self._Config.findall('site'):
                 if Site.find('name').text == site:
                     self._Config.remove(Site)
-            self._tree.write(self._fileName, encoding='utf-8')
+            self._tree.write(self._fileName, encoding='utf-8', xml_declaration=True)
             del self._siteConf[site]
         else:
             raise SiteError('Site already removed')
