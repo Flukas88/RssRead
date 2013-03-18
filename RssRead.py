@@ -39,10 +39,13 @@ class RssRead:
 
     def loadNewsRss(self, site):
         """Load the news. You have to specify the site."""
-        self.feed = feedparser.parse(self._siteConf[site],
-                                     agent='RssRead/0.2 +http://ciscoland.eu/')
-        self._news = list('<a href="' + news.link.encode('utf-8') + '">' + news.title.encode('utf-8') + '</a><br />'
-                          for news in self.feed.entries)
+        if site in self._siteConf:
+            self.feed = feedparser.parse(self._siteConf[site],
+                                         agent='RssRead/0.2 +http://ciscoland.eu/')
+            self._news = list('<a href="' + news.link.encode('utf-8') + '">' + news.title.encode('utf-8') + '</a><br />'
+                              for news in self.feed.entries)
+        else:
+            raise KeyError('Site not present')
 
     @property
     def News(self):
