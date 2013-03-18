@@ -38,13 +38,14 @@ Use the News object bearing in mind that it's already in a Xthml Link format.
 *You can add/remove sites you con use the following syntax
 
     try:
-        rss += 'sito', 'url'
-    except TypeError, e:
-        print e
+        rss += 'site', 'url'
+    except (TypeError, feed.SiteError):
+        print 'Already present'
 
     try:
-        rss -= 'sito'
-    except TypeError, e:
-        print e
+        rss -= 'site'
+    except (TypeError, feed.SiteError):
+        print 'Not present'
+
 
 Enjoy :)
