@@ -22,7 +22,7 @@ and then use the News property to get the news
     
     try:
         rss.loadNewsRss(NAME)
-    except KeyError:
+    except feed.SiteError:
         print 'Site not present!'
         
     for news in rss.News:
