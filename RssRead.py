@@ -42,14 +42,14 @@ class RssRead:
 
     def _loadConf(self):
         """Configuration loading method"""
-        self._siteConf = self._siteConf = {child.find('name').text : child.find('url').text 
+        self._siteConf = {child.find('name').text : child.find('url').text
                                            for child in self._Config}
 
     def loadNewsRss(self, site):
         """Load the news. You have to specify the site."""
         if site in self._siteConf:
             self.feed = feedparser.parse(self._siteConf[site],
-                                         agent='RssRead/0.2 +http://ciscoland.eu/')
+                                         agent='RssRead/0.2 +http://rssread.ciscoland.eu/')
             self._news = ('<a href="' + news.link.encode('utf-8') + '">' +
                           news.title.encode('utf-8') + '</a><br />'
                           for news in self.feed.entries)
