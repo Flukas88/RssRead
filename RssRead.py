@@ -40,8 +40,13 @@ class RssRead:
         self._Config = self._tree.getroot()
         self._loadConf()
 
+    def _loadFmtNews(self):
+        with open('format.data', 'r') as f:
+            self._fmt_news = f.read()
+
     def _loadConf(self):
         """Configuration loading method"""
+        self._loadFmtNews()
         self._siteConf = {child.find('name').text : child.find('url').text
                                            for child in self._Config}
 
@@ -50,7 +55,7 @@ class RssRead:
         if site in self._siteConf:
             self.feed = feedparser.parse(self._siteConf[site],
                                          agent='RssRead/0.2 +http://rssread.ciscoland.eu/')
-            self._news = ['<a href="%(site)s">%(title)s</a><br />' %
+            self._news = [self._fmt_news %
                           {"site": news.link.encode('utf-8'), "title": news.title.encode('utf-8')}
                           for news in self.feed.entries]
         else:
