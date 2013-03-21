@@ -1,32 +1,27 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE Config SYSTEM "Config.dtd">
+<?xml version='1.0' encoding='utf-8'?>
 <Config>
-  <site>
-		<name>Ansa</name>
-		<url>http://www.ansa.it/main/notizie/awnplus/topnews/synd/ansait_awnplus_topnews_medsynd_Today_Idx.xml</url>
-	</site>
-	<site>
-		<name>AndroidWorld</name>
-		<url>http://www.androidworld.it/rss</url>
-	</site>
-	<site>
-		<name>Androidiani</name>
-		<url>http://feeds.feedburner.com/Androidiani</url>
-	</site>
-	<site>
-		<name>slashdot</name>
-		<url>http://rss.slashdot.org/Slashdot/slashdot</url>
-	</site>
-	<site>
-		<name>hwupgrade</name>
-		<url>http://feeds.hwupgrade.it/rss_hwup.xml</url>
-	</site>
-	<site>
-		<name>torrent</name>
-		<url>http://www.nyaa.eu/?page=rss&#38;term=dragonball</url>
-	</site>
-	<site>
-		<name>python</name>
-		<url>http://www.python.org/channews.rdf</url>
-	</site>
+    <site>
+        <name>Ansa</name>
+        <url>http://www.ansa.it/main/notizie/awnplus/topnews/synd/ansait_awnplus_topnews_medsynd_Today_Idx.xml</url>
+    </site>
+    <site>
+        <name>AndroidWorld</name>
+        <url>http://www.androidworld.it/rss</url>
+    </site>
+    <site>
+        <name>Androidiani</name>
+        <url>http://feeds.feedburner.com/Androidiani</url>
+    </site>
+    <site>
+        <name>slashdot</name>
+        <url>http://rss.slashdot.org/Slashdot/slashdot</url>
+    </site>
+    <site>
+        <name>torrent</name>
+        <url>http://www.nyaa.eu/?page=rss&amp;term=dragonball</url>
+    </site>
+    <site>
+        <name>python</name>
+        <url>http://www.python.org/channews.rdf</url>
+    </site>
 </Config>
