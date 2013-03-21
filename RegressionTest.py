@@ -34,6 +34,9 @@ class RegressionTest(unittest.TestCase):
         self.rss.loadNewsRss('python')
         self.assertNotEqual(self.rss.News, [], 'Problems with rss loading')
 
+    def test_fmt_loading(self):
+        self.assertNotEqual(self.rss._fmt_news, ' ', 'Problems with format loading')
+
     def test_unicode_except(self):
         try:
             self.rss.loadNewsRss('torrent')
