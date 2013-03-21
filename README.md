@@ -9,8 +9,9 @@ RssRead
     Version 0.1
      - Initial use of Python class
 
-Repo for RssRead, an experimental API for reading RSS( and Atom) . 
-[Python module feedparser is required.]
+Repo for RssRead, an experimental API for reading RSS( and Atom ) wich offers a good way as a part of a GUI program
+or as a base for a personal script. 
+[Python module feedparser is *required*.]
 
 It's a module you can use with a 
 
@@ -29,13 +30,12 @@ and then use the News property to get the news
         pass
  
 In NAME you can use any of the configured* site.
-You can, of course, use multiple RssReader on the same program.
-Or you can load more news with the same istance (using each time loadNewsRss())
+
+You can, of course, use multiple RssReader on the same program or you can load more news with the same instance (using each time loadNewsRss())
 Use the News object bearing in mind that it's, by default**, in a Xthml Link format.
 
 
-
-*You can add/remove sites you con use the following syntax
+*You can easly add/remove sites using the following syntax
 
     try:
         rss += 'site', 'url'
