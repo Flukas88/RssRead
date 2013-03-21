@@ -1,6 +1,10 @@
 RssRead
 =======
 
+    Version 0.3
+     - Removed DTD and some code cleaning
+     - External config file for news output
+     - Code cleaning and more python syntas
     Version 0.2
      - Refactoring Python Style and more simple API
      - Removed DTD and some code cleaning
