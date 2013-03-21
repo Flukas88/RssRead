@@ -50,8 +50,8 @@ class RssRead:
         if site in self._siteConf:
             self.feed = feedparser.parse(self._siteConf[site],
                                          agent='RssRead/0.2 +http://rssread.ciscoland.eu/')
-            self._news = ['<a href="' + news.link.encode('utf-8') + '">' +
-                          news.title.encode('utf-8') + '</a><br />'
+            self._news = ['<a href="%(site)s">%(title)s</a><br />' %
+                          {"site": news.link.encode('utf-8'), "title": news.title.encode('utf-8')}
                           for news in self.feed.entries]
         else:
             raise SiteError('Site not present')
