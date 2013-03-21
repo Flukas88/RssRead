@@ -3,6 +3,7 @@ RssRead
 
     Version 0.2
      - Refactoring Python Style and more simple API
+     - Removed DTD and some code cleaning
     Version 0.11
      - Using C implementation of Xml parser
      - Extern DTD for the xml config file
