@@ -31,7 +31,7 @@ and then use the News property to get the news
 In NAME you can use any of the configured* site.
 You can, of course, use multiple RssReader on the same program.
 Or you can load more news with the same istance (using each time loadNewsRss())
-Use the News object bearing in mind that it's already in a Xthml Link format.
+Use the News object bearing in mind that it's, by default**, in a Xthml Link format.
 
 
 
@@ -46,6 +46,10 @@ Use the News object bearing in mind that it's already in a Xthml Link format.
         rss -= 'site'
     except (TypeError, feed.SiteError):
         print 'Not present'
+
+**You can also coustomize the way news are outputed in the file changind the standard
+
+    '<a href="%(site)s">%(title)s</a><br />'
 
 
 Enjoy :)
