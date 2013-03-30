@@ -19,10 +19,19 @@
 # by Luca Francesca, 2013
 
 import feedparser
+import re
 import xml.etree.cElementTree as etree
 
 
 class SiteError(Exception):
+    def __init__(self, value):
+        self.value = value
+
+    def __str__(self):
+        return repr(self.value)
+
+
+class FormatError(Exception):
     def __init__(self, value):
         self.value = value
 
@@ -43,6 +52,10 @@ class RssRead:
     def _loadFmtNews(self):
         with open('format.data', 'r') as f:
             self._fmt_news = f.read()
+        self.fmt_regex = re.compile('[\%\(site\)s]\s*[\%\(title\)s]')
+        self.fmt_regex.match(self._fmt_news)
+        if self.fmt_regex is None:
+            raise FormatError('Format for news output is invalid')
 
     def _loadConf(self):
         """Configuration loading method"""
