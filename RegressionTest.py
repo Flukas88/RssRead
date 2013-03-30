@@ -38,10 +38,16 @@ class RegressionTest(unittest.TestCase):
     def test_fmt_loading(self):
         self.assertNotEqual(self.rss._fmt_news, ' ', 'Problems with format loading')
 
+    def test_fmt_loading_sintax(self):
+        try:
+            self.rss.loadNewsRss('python')
+        except (feed.FormatError, KeyError):
+            self.fail('Format for news output is invalid')
+
     def test_unicode_except(self):
         try:
             self.rss.loadNewsRss('torrent')
-        except UnicodeEncodeError:
+        except (UnicodeEncodeError, KeyError):
             self.fail('Unicode Error thrown')
 
     def test_add_site(self):
