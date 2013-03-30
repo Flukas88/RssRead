@@ -30,25 +30,23 @@ class RegressionTest(unittest.TestCase):
     def test_configuration(self):
         self.assertNotEqual(self.rss._siteConf, {}, 'Problems with configuration loading')
 
-    def test_loading(self):
-        self.rss.loadNewsRss('python')
-        self.rss.loadNewsRss('slashdot')
-        self.assertNotEqual(self.rss.News, [], 'Problems with rss loading')
-
-    def test_fmt_loading(self):
-        self.assertNotEqual(self.rss._fmt_news, ' ', 'Problems with format loading')
-
     def test_fmt_loading_sintax(self):
         try:
-            self.rss.loadNewsRss('python')
+            self.rss.loadNewsRss('slashdot')
         except (feed.FormatError, KeyError):
             self.fail('Format for news output is invalid')
+
+    def test_loading_news(self):
+        try:
+            self.rss.loadNewsRss('slashdot')
+        except KeyError:
+            self.fail('Error loading news, unexpected')
 
     def test_unicode_except(self):
         try:
             self.rss.loadNewsRss('torrent')
         except (UnicodeEncodeError, KeyError):
-            self.fail('Unicode Error thrown')
+            self.fail('Unicode Error thrown, unexpected')
 
     def test_add_site(self):
         self.rss += 'io', 'tu'
