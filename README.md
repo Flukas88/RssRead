@@ -29,9 +29,8 @@ and then use the News property to get the news
         rss.loadNewsRss(NAME)
     except feed.SiteError:
         print 'Site not present!'
-        
-    for news in rss.News:
-        pass
+    except (feed.FormatError, KeyError):
+        print 'Format invalid'
  
 In NAME you can use any of the configured* site.
 
