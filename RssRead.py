@@ -31,7 +31,7 @@ class SiteError(Exception):
         return repr(self.value)
 
 
-class FormatError(Exception):
+class FormatError(KeyError):
     def __init__(self, value):
         self.value = value
 
