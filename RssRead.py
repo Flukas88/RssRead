@@ -18,12 +18,14 @@
 # RssRead 0.3
 # by Luca Francesca, 2013
 
+from __future__ import print_function
 import feedparser
 import re
 import xml.etree.cElementTree as etree
 
 
 class SiteError(Exception):
+    """ Site error Exception Class """
     def __init__(self, value):
         self.value = value
 
@@ -32,6 +34,7 @@ class SiteError(Exception):
 
 
 class FormatError(KeyError):
+    """ Output Format  Exception Class """
     def __init__(self, value):
         self.value = value
 
@@ -50,6 +53,7 @@ class RssRead:
         self._loadConf()
 
     def _loadFmtNews(self):
+        """ Load news parameters and check output format """
         with open('format.data', 'r') as f:
             self._fmt_news = f.read()
         self.fmt_regex = re.compile('[\%\(site\)s]\s*[\%\(title\)s]')
