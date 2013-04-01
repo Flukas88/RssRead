@@ -15,7 +15,7 @@
 # along with this program.
 # If not, see <http://www.gnu.org/copyleft/lesser.html>.
 #
-# RssRead 0.3
+# RssRead 0.3.1
 # by Luca Francesca, 2013
 
 from __future__ import print_function
