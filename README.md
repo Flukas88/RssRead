@@ -2,7 +2,7 @@ RssRead
 =======
 
     Version 0.3.1
-    - Added output format sintax regex
+     - Added output format sintax regex
     Version 0.3
      - Removed DTD
      - External config file for news output
