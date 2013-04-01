@@ -27,13 +27,13 @@ class RegressionTest(unittest.TestCase):
     def setUp(self):
         self.rss = feed.RssRead()
 
-    def test_configuration(self):
+    def test_configuration_loading(self):
         self.assertNotEqual(self.rss._siteConf, {}, 'Problems with configuration loading')
 
     def test_fmt_loading_sintax(self):
         try:
             self.rss.loadNewsRss('slashdot')
-        except (feed.FormatError, KeyError):
+        except feed.FormatError:
             self.fail('Format for news output is invalid')
 
     def test_loading_news(self):
@@ -48,21 +48,21 @@ class RegressionTest(unittest.TestCase):
         except (UnicodeEncodeError, KeyError):
             self.fail('Unicode Error thrown, unexpected')
 
-    def test_add_site(self):
+    def test_add_site_twice(self):
         self.rss += 'io', 'tu'
         try:
             self.rss += 'io', 'tu'
         except (TypeError, feed.SiteError):
             self.fail('Already present site exception thrown, expected')
 
-    def test_remove_site(self):
+    def test_remove_site_twice(self):
         self.rss -= 'io'
         try:
             self.rss -= 'io'
         except (TypeError, feed.SiteError):
             self.fail('Already removed site exception thrown, expected')
 
-    def test_present_site(self):
+    def test_already_present_site(self):
         try:
             self.rss.loadNewsRss('hwupgrade.it')
         except (TypeError, feed.SiteError):
