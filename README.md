@@ -34,15 +34,16 @@ You can, of course, use multiple RssReader on the same program or you can load m
 Use the News object bearing in mind that it's, by default**, in a Xthml Link format.
 
 *You can easly add/remove sites using the following syntax
+
     try:
         rss += 'site', 'url'
     except (TypeError, feed.SiteError):
         print('Already present')
-
     try:
         rss -= 'site'
     except (TypeError, feed.SiteError):
         print('Not present')
+    
 **You can also coustomize the way news are outputed in the file changind the standard
 
     '<a href="%(site)s">%(title)s</a><br />'
