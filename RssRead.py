@@ -54,7 +54,7 @@ class RssRead:
 
     def _loadFmtNews(self):
         """ Load news parameters and check output format """
-        with open('format.data', 'r') as f:
+        with open('format.data') as f:
             self._fmt_news = f.read()
         self.fmt_regex = re.compile('[\%\(site\)s]\s*[\%\(title\)s]')
         self.fmt_regex.match(self._fmt_news)
