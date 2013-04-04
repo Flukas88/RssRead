@@ -41,7 +41,14 @@ In NAME you can use any of the configured* site.
 You can, of course, use multiple RssReader on the same program or you can load more news with the same instance (using each time loadNewsRss())
 Use the News object bearing in mind that it's, by default**, in a Xthml Link format.
 
-I also added a class of velidity check for the config file. (soon the documentation.)
+I also added a class of validity check for the config file. 
+
+    import RssConfValidate as validate
+
+    tst = validate.RssConfValidate()
+    print(tst.Valid)
+    
+The property Valid will be True if the config is valid or False otherwise.
 
 *You can easly add/remove sites using the following syntax
 
