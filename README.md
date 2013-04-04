@@ -20,8 +20,12 @@ or as a base for a personal script.
 [Python module feedparser is *required*.]
 
 It's a module you can use with a 
+
     import RssRead as feed
+    
+    
 and then use the News property to get the news
+
     rss = feed.RssRead() 
     
     try:
@@ -30,6 +34,8 @@ and then use the News property to get the news
         print('Site not present!')
     except (feed.FormatError, KeyError):
         print('Format invalid')
+
+
 In NAME you can use any of the configured* site.
 
 You can, of course, use multiple RssReader on the same program or you can load more news with the same instance (using each time loadNewsRss())
