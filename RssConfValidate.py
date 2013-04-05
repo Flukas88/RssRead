@@ -24,13 +24,15 @@ import genxmlif
 
 
 class RssConfValidate:
-    def __init__(self):
+    def __init__(self, fileName='config.xml', fileConfig='config.xsd'):
+        self._fileName = fileName
+        self._fileConfig = fileConfig
         self._valid = True
         self._validateConf()
 
     def _validateConf(self):
         try:
-            xsv.parseAndValidate("config.xml", xsdFile="config.xsd")
+            xsv.parseAndValidate(self._fileName, xsdFile=self._fileConfig)
         except (xsv.XsvalError, genxmlif.GenXmlIfError):
             self.Valid = False
 
