@@ -25,10 +25,14 @@ import unittest
 class RegressionTest(unittest.TestCase):
 
     def setUp(self):
-        self.tst = validate.RssConfValidate()
+        self.tst = validate.RssConfValidate('config_fake.xml')
 
-    def test_configuration_content(self):
-        self.assertTrue(self.tst.Valid, 'Problems with validity of config file.')
+    def test_configuration_content_wrong(self):
+        self.assertTrue(self.tst.Valid, 'Expected failure on wrong config file.')
+
+    def test_configuration_content_right(self):
+        self.tst = validate.RssConfValidate('config_right.xml')
+        self.assertTrue(self.tst.Valid, 'Right file ok.')
 
 if __name__ == '__main__':
     unittest.main()
