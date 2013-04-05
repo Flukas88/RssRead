@@ -43,13 +43,8 @@ You can, of course, use multiple RssReader on the same program or you can load m
 Use the News object bearing in mind that it's, by default**, in a Xthml Link format.
 
 I also added a class of validity check for the config file. 
-
-    import RssConfValidate as validate
-
-    tst = validate.RssConfValidate()
-    print(tst.Valid)
+You can use *VerifyConf.py* to verify your configuration
     
-The property Valid will be True if the config is valid or False otherwise.
 
 *You can easly add/remove sites using the following syntax
 
