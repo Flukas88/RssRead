@@ -25,4 +25,4 @@ try:
     tst = validate.RssConfValidate()
     print(tst.Valid)
 except (xsv.XsvalError, genxmlif.GenXmlIfError):
-    print('Config Non valida')
+    print('Invalid configuration file')
