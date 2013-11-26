@@ -57,7 +57,7 @@ You can use *VerifyConf.py* to verify your configuration
     except (TypeError, feed.SiteError):
         print('Not present')
     
-**You can also coustomize the way news are outputed in the file, changing the standard
+**You can also customize the way news are outputed in the file, changing the standard
 
     '<a href="%(site)s">%(title)s</a><br />'
 
