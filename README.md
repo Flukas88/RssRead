@@ -16,8 +16,8 @@ RssRead
     Version 0.1
      - Initial use of Python class
 
-Repo for RssRead, an experimental API for reading RSS wich offers a good way as a part of a GUI program
-or as a base for a personal script. 
+Repo for RssRead, an experimental Python API for reading RSS wich offers a good codebase for a GUI program
+or as an integration for a personal script. 
 [Python modules feedparser and minixsv are *required*.]
 
 It's a module you can use with a 
@@ -57,7 +57,7 @@ You can use *VerifyConf.py* to verify your configuration
     except (TypeError, feed.SiteError):
         print('Not present')
     
-**You can also coustomize the way news are outputed in the file changind the standard
+**You can also coustomize the way news are outputed in the file, changing the standard
 
     '<a href="%(site)s">%(title)s</a><br />'
 
