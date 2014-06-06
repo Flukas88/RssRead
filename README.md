@@ -48,8 +48,9 @@ You can use *VerifyConf.py* to verify your configuration
 
 *You can easly add/remove sites using the following syntax
 
-[ work in progress ]
-    
+    rss.addSite('NAME', 'URL')
+    rss.removeSite('NAME')
+
 **You can also customize the way news are outputed in the file, changing the standard
 
     '<a href="%(site)s">%(title)s</a><br />'
