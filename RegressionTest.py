@@ -20,7 +20,8 @@
 
 import RssRead as feed
 import unittest
-
+import time 
+import string
 
 class RegressionTest(unittest.TestCase):
 
