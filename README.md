@@ -34,6 +34,7 @@ and then use the News property to get the news
     
         rss = feed.RssRead()
         rss.load(NAME)
+        print(rss.News)
   
 
 In NAME you can use any of the configured* site.
