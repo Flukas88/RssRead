@@ -15,8 +15,7 @@
 # along with this program.
 # If not, see <http://www.gnu.org/copyleft/lesser.html>.
 #
-# RssRead 0.3.1
-# by Luca Francesca, 2013
+# by Luca Francesca, 2014
 
 from __future__ import print_function
 from minixsv import pyxsval as xsv
