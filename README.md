@@ -20,7 +20,7 @@ RssRead
 
 Repo for RssRead, an experimental Python API for reading RSS wich offers a good codebase for a GUI program
 or as an integration for a personal script. 
-[Python modules feedparser and minixsv are *required*.]
+[Python modules feedparser and lxml are *required*.]
 
 It's a module you can use with a 
 
