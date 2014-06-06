@@ -21,6 +21,8 @@
 from __future__ import print_function
 import feedparser
 import re
+import time
+import string
 import xml.etree.cElementTree as etree
 
 
@@ -82,7 +84,7 @@ class RssRead:
     def News(self):
         return self._news
 
-    def _addSite(self, name, url):
+    def _addSite(self, name, url, time=str(time.time())):
         """Configuration site adding method. The args are (name, url) """
         if name in self._siteConf:
             raise SiteError('Site already present')
@@ -90,6 +92,7 @@ class RssRead:
             Site = etree.SubElement(self._Config, 'site')
             etree.SubElement(Site, 'name').text = name
             etree.SubElement(Site, 'url').text = url
+            etree.SubElement(Site, 'lastupdate').text = time
             self._tree.write(self._fileName, encoding='utf-8', xml_declaration=True)
             self._siteConf[name] = url
 
