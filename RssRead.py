@@ -15,12 +15,13 @@
 # along with this program.
 # If not, see <http://www.gnu.org/copyleft/lesser.html>.
 #
-# RssRead 0.3.1
-# by Luca Francesca, 2013
+# by Luca Francesca, 2014
 
 from __future__ import print_function
 import feedparser
 import re
+import time
+import string
 import xml.etree.cElementTree as etree
 
 
@@ -71,7 +72,7 @@ class RssRead:
         """Load the news. You have to specify the site."""
         if site in self._siteConf:
             self.feed = feedparser.parse(self._siteConf[site],
-                                         agent='RssRead/0.3.1 +http://www.lucafrancesca.eu/')
+                                         agent='RssRead/0.3 +http://www.lucafrancesca.eu/')
             self._news = [self._fmt_news %
                           {"site": news.link.encode('utf-8'), "title": news.title.encode('utf-8')}
                           for news in self.feed.entries]
@@ -82,7 +83,7 @@ class RssRead:
     def News(self):
         return self._news
 
-    def _addSite(self, name, url):
+    def _addSite(self, name, url, time=str(time.time())):
         """Configuration site adding method. The args are (name, url) """
         if name in self._siteConf:
             raise SiteError('Site already present')
@@ -90,6 +91,7 @@ class RssRead:
             Site = etree.SubElement(self._Config, 'site')
             etree.SubElement(Site, 'name').text = name
             etree.SubElement(Site, 'url').text = url
+            etree.SubElement(Site, 'lastupdate').text = time
             self._tree.write(self._fileName, encoding='utf-8', xml_declaration=True)
             self._siteConf[name] = url
 
@@ -105,7 +107,34 @@ class RssRead:
             raise SiteError('Site already removed')
 
     def __isub__(self, site):
-        self._removeSite(site)
+        self.safe_remove(site)
 
     def __iadd__(self, cnf):
-        self._addSite(cnf[0], cnf[1])
+        self.safe_add(cnf[0], cnf[1])
+
+    def safe_load(self, site):
+        try:
+            self.loadNewsRss(site)
+        except SiteError:
+            print('Site not present!')
+        except (FormatError, KeyError, NameError):
+            print('Format invalid')
+            
+    def load(self, site):
+        self.safe_load(site)
+
+    def safe_add(self, site, url):
+        try:
+            self._addSite(site, url)
+        except (NameError,SiteError):
+            print('Already present')
+        except TypeError:
+            pass
+        
+    def safe_remove(self, site):
+        try:
+            self._removeSite(site)
+        except (SiteError):
+            print('Not present')
+        except (TypeError, NameError):
+            pass
