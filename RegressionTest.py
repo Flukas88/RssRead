@@ -49,22 +49,22 @@ class RegressionTest(unittest.TestCase):
             self.fail('Unicode Error thrown, unexpected')
 
     def test_add_site_twice(self):
-        self.rss += 'io', 'tu'
+        self.rss.addSite('NAME', 'URL')
         try:
-            self.rss += 'io', 'tu'
+            self.rss.addSite('NAME', 'URL')
         except (TypeError, feed.SiteError):
             self.fail('Already present site exception thrown, expected')
 
     def test_remove_site_twice(self):
-        self.rss -= 'io'
+        self.rss.removeSite('NAME')
         try:
-            self.rss -= 'io'
+            self.rss.removeSite('NAME')
         except (TypeError, feed.SiteError):
             self.fail('Already removed site exception thrown, expected')
 
     def test_already_present_site(self):
         try:
-            self.rss.loadNewsRss('hwupgrade.it')
+            self.rss.loadNewsRss('python')
         except (TypeError, feed.SiteError):
             self.fail('Site not present exception thrown, expected')
 
