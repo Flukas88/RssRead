@@ -39,7 +39,7 @@ and then use the News property to get the news
 
 In NAME you can use any of the configured* site.
 
-You can, of course, use multiple RssReader on the same program or you can load more news with the same instance (using each time loadNewsRss())
+You can, of course, use multiple RssReader on the same program or you can load more news with the same instance (using each time the *load* function)
 Use the News object bearing in mind that it's, by default**, in a Xthml Link format.
 
 I also added a class of validity check for the config file. 
