@@ -1,4 +1,0 @@
-<!ELEMENT Config  (site*)> 
-<!ELEMENT site (name,url)> 
-<!ELEMENT name (#PCDATA)> 
-<!ELEMENT url  (#PCDATA)>  
