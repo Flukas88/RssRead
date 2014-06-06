@@ -55,6 +55,7 @@ You can use *VerifyConf.py* to verify your configuration
 *You can easly add/remove sites using the following syntax
 
     try:
+        rss = feed.RssRead()
         rss += 'site', 'url'
     except (TypeError, feed.SiteError):
         print('Already present')
