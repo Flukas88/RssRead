@@ -61,4 +61,5 @@ You can use *VerifyConf.py* to verify your configuration
 
     '<a href="%(site)s">%(title)s</a><br />'
 
-Enjoy :)
+
+Support can be found here http://188.226.206.196/projects/rssread
