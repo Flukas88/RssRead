@@ -3,26 +3,26 @@
     <site>
         <name>AndroidWorld</name>
         <url>http://www.androidworld.it/rss</url>
-        <lastupdate></lastupdate>
+        <lastupdate>1402050214.958663</lastupdate>
     </site>
     <site>
         <name>Androidiani</name>
         <url>http://feeds.feedburner.com/Androidiani</url>
-        <lastupdate></lastupdate>
+        <lastupdate>1402050214.958663</lastupdate>
     </site>
     <site>
         <name>slashdot</name>
         <url>http://rss.slashdot.org/Slashdot/slashdot</url>
-        <lastupdate></lastupdate>
+        <lastupdate>1402050214.958663</lastupdate>
     </site>
     <site>
         <name>torrent</name>
         <url>http://www.nyaa.eu/?page=rss&amp;term=dragonball</url>
-        <lastupdate></lastupdate>
+        <lastupdate>1402050214.958663</lastupdate>
     </site>
     <site>
         <name>python</name>
         <url>http://www.python.org/channews.rdf</url>
-        <lastupdate></lastupdate>
+        <lastupdate>1402050257.320898</lastupdate>
     </site>
 </Config>
