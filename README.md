@@ -32,16 +32,9 @@ It's a module you can use with a
 and then use the News property to get the news
 
     
-    try:
         rss = feed.RssRead()
-        rss.loadNewsRss(NAME)
-    except feed.SiteError:
-        print('Site not present!')
-    except (feed.FormatError, KeyError):
-        print('Format invalid')
-    except NameError:
-        pass
-
+        rss.load(NAME)
+  
 
 In NAME you can use any of the configured* site.
 
