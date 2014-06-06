@@ -3,7 +3,6 @@ RssRead
 
     Version 0.3.2
      - Added timestamps 
-
     Version 0.3.1
      - Added output format sintax regex
      - Added config file validity check
