@@ -12,6 +12,7 @@
       <xs:sequence>
         <xs:element name="name" type="xs:string"/>
         <xs:element name="url" type="xs:string"/>
+        <xs:element name="lastupdate" type="xs:string"/>
       </xs:sequence>
     </xs:complexType>
   </xs:element>
