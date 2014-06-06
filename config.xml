@@ -1,27 +1,28 @@
 <?xml version='1.0' encoding='utf-8'?>
 <Config>
     <site>
-        <name>Ansa</name>
-        <url>http://www.ansa.it/main/notizie/awnplus/topnews/synd/ansait_awnplus_topnews_medsynd_Today_Idx.xml</url>
-    </site>
-    <site>
         <name>AndroidWorld</name>
         <url>http://www.androidworld.it/rss</url>
+        <lastupdate></lastupdate>
     </site>
     <site>
         <name>Androidiani</name>
         <url>http://feeds.feedburner.com/Androidiani</url>
+        <lastupdate></lastupdate>
     </site>
     <site>
         <name>slashdot</name>
         <url>http://rss.slashdot.org/Slashdot/slashdot</url>
+        <lastupdate></lastupdate>
     </site>
     <site>
         <name>torrent</name>
         <url>http://www.nyaa.eu/?page=rss&amp;term=dragonball</url>
+        <lastupdate></lastupdate>
     </site>
     <site>
         <name>python</name>
         <url>http://www.python.org/channews.rdf</url>
+        <lastupdate></lastupdate>
     </site>
 </Config>
