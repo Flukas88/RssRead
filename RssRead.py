@@ -107,7 +107,34 @@ class RssRead:
             raise SiteError('Site already removed')
 
     def __isub__(self, site):
-        self._removeSite(site)
+        self.safe_remove(site)
 
     def __iadd__(self, cnf):
-        self._addSite(cnf[0], cnf[1])
+        self.safe_add(cnf[0], cnf[1])
+
+    def safe_load(self, site):
+        try:
+            self.loadNewsRss(site)
+        except SiteError:
+            print('Site not present!')
+        except (FormatError, KeyError, NameError):
+            print('Format invalid')
+            
+    def load(self, site):
+        self.safe_load(site)
+
+    def safe_add(self, site, url):
+        try:
+            self._addSite(site, url)
+        except (NameError,SiteError):
+            print('Already present')
+        except TypeError:
+            print('Url missing')
+        
+    def safe_remove(self, site):
+        try:
+            self._removeSite(site)
+        except (SiteError):
+            print('Not present')
+        except (TypeError, NameError):
+            pass
