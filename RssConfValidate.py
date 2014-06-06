@@ -18,8 +18,7 @@
 # by Luca Francesca, 2014
 
 from __future__ import print_function
-from minixsv import pyxsval as xsv
-import genxmlif
+from lxml import etree
 
 
 class RssConfValidate:
@@ -27,13 +26,17 @@ class RssConfValidate:
         self._fileName = fileName
         self._fileConfig = fileConfig
         self._valid = True
+        self.schema_f = etree.parse(fileConfig)
         self._validateConf()
 
     def _validateConf(self):
-        try:
-            xsv.parseAndValidate(self._fileName, xsdFile=self._fileConfig)
-        except (xsv.XsvalError, genxmlif.GenXmlIfError):
-            self.Valid = False
+        schema = etree.XMLSchema(self.schema_f)
+        parser = etree.XMLParser(schema = schema)
+        with open(self._fileName) as f_source:
+            try:
+                doc = etree.parse(f_source, parser)
+            except etree.XMLSyntaxError:
+                self.Valid = False
 
     @property
     def Valid(self):
