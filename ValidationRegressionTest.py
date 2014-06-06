@@ -24,7 +24,7 @@ import unittest
 class RegressionTest(unittest.TestCase):
 
     def setUp(self):
-        self.tst = validate.RssConfValidate('config_fake.xml')
+        self.tst = validate.RssConfValidate('config_fake.xml','config.xsd')
 
     def test_configuration_content_wrong(self):
         self.assertTrue(self.tst.Valid, 'Expected failure on wrong config file.')
