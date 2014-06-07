@@ -20,8 +20,10 @@
 import RssConfValidate as validate
 
 
-try:
-    tst = validate.RssConfValidate()
-    print(tst.Valid)
-except (xsv.XsvalError, genxmlif.GenXmlIfError):
-    print('Invalid configuration file')
+tst = validate.RssConfValidate()
+
+if tst.Valid is True:
+    print("Valid configuration")
+else:
+    print("Invalid configuration")
+

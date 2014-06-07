@@ -18,10 +18,17 @@
 # by Luca Francesca, 2014
 
 import RssRead as feed
+import RssConfValidate as validate
 
-rss = feed.RssRead()
-rss.load('slashdot')
-print(rss.News)
+try:
+    tst = validate.RssConfValidate()
+    rss = feed.RssRead()
+    rss.load('slashdot')
+    print(rss.News)
+except (xsv.XsvalError, genxmlif.GenXmlIfError):
+    print('Invalid configuration file')
+
+
 
 
 
