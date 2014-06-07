@@ -20,13 +20,17 @@
 import RssRead as feed
 import RssConfValidate as validate
 
-try:
-    tst = validate.RssConfValidate()
+tst = validate.RssConfValidate()
+
+if tst.Valid is True:
     rss = feed.RssRead()
     rss.load('slashdot')
     print(rss.News)
-except (xsv.XsvalError, genxmlif.GenXmlIfError):
-    print('Invalid configuration file')
+else:
+    print("Invalid configuration")
+
+
+    
 
 
 
