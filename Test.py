@@ -17,11 +17,11 @@
 #
 # by Luca Francesca, 2014
 
-import RssConfValidate as validate
+import RssRead as feed
+
+rss = feed.RssRead()
+rss.load('slashdot')
+print(rss.News)
 
 
-try:
-    tst = validate.RssConfValidate()
-    print(tst.Valid)
-except (xsv.XsvalError, genxmlif.GenXmlIfError):
-    print('Invalid configuration file')
+
