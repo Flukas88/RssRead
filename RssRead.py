@@ -117,13 +117,7 @@ class RssRead:
             del self._siteConf[site]
         else:
             raise SiteError('Site already removed')
-
-    def __isub__(self, site):
-        self.safe_remove(site)
-
-    def __iadd__(self, cnf):
-        self.safe_add(cnf[0], cnf[1])
-
+            
     def safe_load(self, site):
         try:
             self.loadNewsRss(site)
