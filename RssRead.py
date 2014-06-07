@@ -21,12 +21,21 @@ from __future__ import print_function
 import feedparser
 import re
 import time
-import string
 import xml.etree.cElementTree as etree
+import RssConfValidate as validate
 
 
 class SiteError(Exception):
     """ Site error Exception Class """
+    def __init__(self, value):
+        self.value = value
+
+    def __str__(self):
+        return repr(self.value)
+
+
+class ConfigurationError(Exception):
+    """ Configuration Exception Class """
     def __init__(self, value):
         self.value = value
 
@@ -51,6 +60,9 @@ class RssRead:
         self._news = []
         self._tree = etree.parse(self._fileName)
         self._Config = self._tree.getroot()
+        val = validate.RssConfValidate()
+        if val.Valid is False:
+            raise ConfigurationError('Configuration file is invalid')
         self._loadConf()
 
     def _loadFmtNews(self):
