@@ -86,7 +86,8 @@ class RssRead:
             self.feed = feedparser.parse(self._siteConf[site],
                                          agent='RssRead/0.3 +http://www.lucafrancesca.eu/')
             self._news = [self._fmt_news %
-                          {"site": news.link.encode('utf-8'), "title": news.title.encode('utf-8')}
+                          {"site": news.link.encode('utf-8'),
+                           "title": news.title.encode('utf-8')}
                           for news in self.feed.entries]
         else:
             raise SiteError('Site not present')
@@ -104,7 +105,8 @@ class RssRead:
             etree.SubElement(Site, 'name').text = name
             etree.SubElement(Site, 'url').text = url
             etree.SubElement(Site, 'lastupdate').text = time
-            self._tree.write(self._fileName, encoding='utf-8', xml_declaration=True)
+            self._tree.write(self._fileName, encoding='utf-8',
+                             xml_declaration=True)
             self._siteConf[name] = url
 
     def _removeSite(self, site):
@@ -113,7 +115,8 @@ class RssRead:
             for Site in self._Config.findall('site'):
                 if Site.find('name').text == site:
                     self._Config.remove(Site)
-            self._tree.write(self._fileName, encoding='utf-8', xml_declaration=True)
+            self._tree.write(self._fileName, encoding='utf-8',
+                             xml_declaration=True)
             del self._siteConf[site]
         else:
             raise SiteError('Site already removed')
@@ -132,14 +135,14 @@ class RssRead:
     def _safe_add(self, site, url):
         try:
             self._addSite(site, url)
-        except (NameError,SiteError):
+        except (NameError, SiteError):
             print('Already present')
         except TypeError:
             print('Url missing')
             
     def addSite(self, site, url):
             self._safe_add(site, url)
-        
+    
     def _safe_remove(self, site):
         try:
             self._removeSite(site)
