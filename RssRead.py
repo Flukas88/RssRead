@@ -118,7 +118,7 @@ class RssRead:
         else:
             raise SiteError('Site already removed')
             
-    def safe_load(self, site):
+    def _safe_load(self, site):
         try:
             self.loadNewsRss(site)
         except SiteError:
@@ -127,9 +127,9 @@ class RssRead:
             print('Format invalid')
             
     def load(self, site):
-        self.safe_load(site)
+        self._safe_load(site)
 
-    def safe_add(self, site, url):
+    def _safe_add(self, site, url):
         try:
             self._addSite(site, url)
         except (NameError,SiteError):
@@ -138,9 +138,9 @@ class RssRead:
             print('Url missing')
             
     def addSite(self, site, url):
-            self.safe_add(site, url)
+            self._safe_add(site, url)
         
-    def safe_remove(self, site):
+    def _safe_remove(self, site):
         try:
             self._removeSite(site)
         except (SiteError):
@@ -148,5 +148,5 @@ class RssRead:
         except (TypeError, NameError):
             pass
         
-    def addSite(self, site, url):
-            self.safe_remove(site)
+    def removeSite(self, site, url):
+            self._safe_remove(site)
