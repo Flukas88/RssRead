@@ -148,5 +148,5 @@ class RssRead:
         except (TypeError, NameError):
             pass
         
-    def removeSite(self, site, url):
+    def removeSite(self, site):
             self._safe_remove(site)
