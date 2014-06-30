@@ -54,6 +54,3 @@ You can use *VerifyConf.py* to verify your configuration
 **You can also customize the way news are outputed in the file, changing the standard
 
     '<a href="%(site)s">%(title)s</a><br />'
-
-
-Support can be found here http://188.226.206.196/projects/rssread
