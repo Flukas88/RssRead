@@ -1,0 +1,118 @@
+<!doctype html>
+<!-- The Time Machine GitHub pages theme was designed and developed by Jon Rohan, on Feb 7, 2012. -->
+<!-- Follow him for fun. http://twitter.com/jonrohan. Tail his code on http://github.com/jonrohan -->
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+  <link rel="stylesheet" href="stylesheets/stylesheet.css" media="screen">
+  <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+  <script type="text/javascript" src="javascripts/script.js"></script>
+
+  <title>Rssread</title>
+  <meta name="description" content="RssRead main repo">
+
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+
+</head>
+
+<body>
+
+  <div class="wrapper">
+    <header>
+      <h1 class="title">Rssread</h1>
+    </header>
+    <div id="container">
+      <p class="tagline">RssRead main repo</p>
+      <div id="main" role="main">
+        <div class="download-bar">
+        <div class="inner">
+          <a href="https://github.com/Flukas88/RssRead/tarball/master" class="download-button tar"><span>Download</span></a>
+          <a href="https://github.com/Flukas88/RssRead/zipball/master" class="download-button zip"><span>Download</span></a>
+          <a href="https://github.com/Flukas88/RssRead" class="code">View Rssread on GitHub</a>
+        </div>
+        <span class="blc"></span><span class="trc"></span>
+        </div>
+        <article class="markdown-body">
+          <h1>
+<a name="rssread" class="anchor" href="#rssread"><span class="octicon octicon-link"></span></a>RssRead</h1>
+
+<pre><code>Version 0.3.2
+ - Added timestamps 
+ - Moved to lxml for xml validation
+ - Added compatibility for Python 3.4
+Version 0.3.1
+ - Added output format sintax regex
+ - Added config file validity check
+Version 0.3
+ - Removed DTD
+ - External config file for news output
+ - Code cleaning and more python syntax
+Version 0.2
+ - Refactoring Python Style and more simple API
+Version 0.11
+ - Using C implementation of Xml parser
+ - Extern DTD for the xml config file
+Version 0.1
+ - Initial use of Python class
+</code></pre>
+
+<p>Repo for RssRead, an experimental Python API for reading RSS wich offers a good codebase for a GUI program
+or as an integration for a personal script. 
+[Python modules feedparser and lxml are <em>required</em>.]</p>
+
+<p>It's a module you can use with a </p>
+
+<pre><code>import RssRead as feed
+</code></pre>
+
+<p>and then use the News property to get the news</p>
+
+<pre><code>    rss = feed.RssRead()
+    rss.load(NAME)
+    print(rss.News)
+</code></pre>
+
+<p>In NAME you can use any of the configured* site.</p>
+
+<p>You can, of course, use multiple RssReader on the same program or you can load more news with the same instance (using each time the <em>load</em> function)
+Use the News object bearing in mind that it's, by default**, in a Xthml Link format.</p>
+
+<p>I also added a class of validity check for the config file. 
+You can use <em>VerifyConf.py</em> to verify your configuration</p>
+
+<p>*You can easly add/remove sites using the following syntax</p>
+
+<pre><code>rss.addSite('NAME', 'URL')
+rss.removeSite('NAME')
+</code></pre>
+
+<p>**You can also customize the way news are outputed in the file, changing the standard</p>
+
+<pre><code>'&lt;a href="%(site)s"&gt;%(title)s&lt;/a&gt;&lt;br /&gt;'
+</code></pre>
+        </article>
+      </div>
+    </div>
+    <footer>
+      <div class="owner">
+      <p><a href="https://github.com/Flukas88" class="avatar"><img src="https://avatars2.githubusercontent.com/u/2707529?v=2&amp;s=60" width="48" height="48"></a> <a href="https://github.com/Flukas88">Flukas88</a> maintains <a href="https://github.com/Flukas88/RssRead">Rssread</a></p>
+
+
+      </div>
+      <div class="creds">
+        <small>This page generated using <a href="http://pages.github.com/">GitHub Pages</a><br>theme by <a href="https://twitter.com/jonrohan/">Jon Rohan</a></small>
+      </div>
+    </footer>
+  </div>
+  <div class="current-section">
+    <a href="#top">Scroll to top</a>
+    <a href="https://github.com/Flukas88/RssRead/tarball/master" class="tar">tar</a><a href="https://github.com/Flukas88/RssRead/zipball/master" class="zip">zip</a><a href="" class="code">source code</a>
+    <p class="name"></p>
+  </div>
+
+  
+</body>
+</html>
