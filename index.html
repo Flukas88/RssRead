@@ -1,44 +1,48 @@
 <!doctype html>
-<!-- The Time Machine GitHub pages theme was designed and developed by Jon Rohan, on Feb 7, 2012. -->
-<!-- Follow him for fun. http://twitter.com/jonrohan. Tail his code on http://github.com/jonrohan -->
 <html>
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Rssread by Flukas88</title>
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="javascripts/main.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
 
-  <link rel="stylesheet" href="stylesheets/stylesheet.css" media="screen">
-  <link rel="stylesheet" href="stylesheets/pygment_trac.css">
-  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-  <script type="text/javascript" src="javascripts/script.js"></script>
+  </head>
+  <body>
 
-  <title>Rssread</title>
-  <meta name="description" content="RssRead main repo">
+      <header>
+        <h1>Rssread</h1>
+        <p>RssRead main repo</p>
+      </header>
 
-  <meta name="viewport" content="width=device-width,initial-scale=1">
+      <div id="banner">
+        <span id="logo"></span>
 
-</head>
-
-<body>
-
-  <div class="wrapper">
-    <header>
-      <h1 class="title">Rssread</h1>
-    </header>
-    <div id="container">
-      <p class="tagline">RssRead main repo</p>
-      <div id="main" role="main">
-        <div class="download-bar">
-        <div class="inner">
-          <a href="https://github.com/Flukas88/RssRead/tarball/master" class="download-button tar"><span>Download</span></a>
-          <a href="https://github.com/Flukas88/RssRead/zipball/master" class="download-button zip"><span>Download</span></a>
-          <a href="https://github.com/Flukas88/RssRead" class="code">View Rssread on GitHub</a>
+        <a href="https://github.com/Flukas88/RssRead" class="button fork"><strong>View On GitHub</strong></a>
+        <div class="downloads">
+          <span>Downloads:</span>
+          <ul>
+            <li><a href="https://github.com/Flukas88/RssRead/zipball/master" class="button">ZIP</a></li>
+            <li><a href="https://github.com/Flukas88/RssRead/tarball/master" class="button">TAR</a></li>
+          </ul>
         </div>
-        <span class="blc"></span><span class="trc"></span>
-        </div>
-        <article class="markdown-body">
-          <h1>
+      </div><!-- end banner -->
+
+    <div class="wrapper">
+      <nav>
+        <ul></ul>
+      </nav>
+      <section>
+        <h1>
 <a name="rssread" class="anchor" href="#rssread"><span class="octicon octicon-link"></span></a>RssRead</h1>
 
+<blockquote>
 <pre><code>Version 0.3.2
  - Added timestamps 
  - Moved to lxml for xml validation
@@ -58,6 +62,7 @@ Version 0.11
 Version 0.1
  - Initial use of Python class
 </code></pre>
+</blockquote>
 
 <p>Repo for RssRead, an experimental Python API for reading RSS wich offers a good codebase for a GUI program
 or as an integration for a personal script. 
@@ -65,7 +70,7 @@ or as an integration for a personal script.
 
 <p>It's a module you can use with a </p>
 
-<pre><code>import RssRead as feed
+<pre><code>  import RssRead as feed
 </code></pre>
 
 <p>and then use the News property to get the news</p>
@@ -85,34 +90,21 @@ You can use <em>VerifyConf.py</em> to verify your configuration</p>
 
 <p>*You can easly add/remove sites using the following syntax</p>
 
-<pre><code>rss.addSite('NAME', 'URL')
-rss.removeSite('NAME')
+<pre><code>   rss.addSite('NAME', 'URL')
+   rss.removeSite('NAME')
 </code></pre>
 
 <p>**You can also customize the way news are outputed in the file, changing the standard</p>
 
-<pre><code>'&lt;a href="%(site)s"&gt;%(title)s&lt;/a&gt;&lt;br /&gt;'
+<pre><code>  '&lt;a href="%(site)s"&gt;%(title)s&lt;/a&gt;&lt;br /&gt;'
 </code></pre>
-        </article>
-      </div>
+      </section>
+      <footer>
+        <p>Project maintained by <a href="https://github.com/Flukas88">Flukas88</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://twitter.com/michigangraham">mattgraham</a></small></p>
+      </footer>
     </div>
-    <footer>
-      <div class="owner">
-      <p><a href="https://github.com/Flukas88" class="avatar"><img src="https://avatars2.githubusercontent.com/u/2707529?v=2&amp;s=60" width="48" height="48"></a> <a href="https://github.com/Flukas88">Flukas88</a> maintains <a href="https://github.com/Flukas88/RssRead">Rssread</a></p>
-
-
-      </div>
-      <div class="creds">
-        <small>This page generated using <a href="http://pages.github.com/">GitHub Pages</a><br>theme by <a href="https://twitter.com/jonrohan/">Jon Rohan</a></small>
-      </div>
-    </footer>
-  </div>
-  <div class="current-section">
-    <a href="#top">Scroll to top</a>
-    <a href="https://github.com/Flukas88/RssRead/tarball/master" class="tar">tar</a><a href="https://github.com/Flukas88/RssRead/zipball/master" class="zip">zip</a><a href="" class="code">source code</a>
-    <p class="name"></p>
-  </div>
-
-  
-</body>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+    
+  </body>
 </html>
