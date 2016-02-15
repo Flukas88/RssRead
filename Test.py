@@ -15,24 +15,59 @@
 # along with this program.
 # If not, see <http://www.gnu.org/copyleft/lesser.html>.
 #
-# by Luca Francesca, 2014
+# by Luca Francesca, 2016
 
 import RssRead as feed
-import RssConfValidate as validate
+import unittest
+import time 
+import string
 
-tst = validate.RssConfValidate()
+class RegressionTest(unittest.TestCase):
 
-if tst.Valid is True:
-    rss = feed.RssRead()
-    rss.load('slashdot')
-    print(rss.News)
-else:
-    print("Invalid configuration")
+    def setUp(self):
+        self.rss = feed.RssRead()
+
+    def test_configuration_loading(self):
+        self.assertNotEqual(self.rss._siteConf, {}, 'Problems with configuration loading')
+
+    def test_fmt_loading_sintax(self):
+        try:
+            self.rss.loadNewsRss('slashdot')
+        except feed.FormatError:
+            self.fail('Format for news output is invalid')
+
+    def test_loading_news(self):
+        try:
+            self.rss.loadNewsRss('slashdot')
+        except KeyError:
+            self.fail('Error loading news, unexpected')
+
+    def test_unicode_except(self):
+        try:
+            self.rss.loadNewsRss('torrent')
+        except (UnicodeEncodeError, KeyError):
+            self.fail('Unicode Error thrown, unexpected')
+
+    def test_add_site_twice(self):
+        self.rss.addSite('NAME', 'URL')
+        try:
+            self.rss.addSite('NAME', 'URL')
+        except (TypeError, feed.SiteError):
+            self.fail('Already present site exception thrown, expected')
+
+    def test_remove_site_twice(self):
+        self.rss.removeSite('NAME')
+        try:
+            self.rss.removeSite('NAME')
+        except (TypeError, feed.SiteError):
+            self.fail('Already removed site exception thrown, expected')
+
+    def test_already_present_site(self):
+        try:
+            self.rss.loadNewsRss('python')
+        except (TypeError, feed.SiteError):
+            self.fail('Site not present exception thrown, expected')
 
 
-    
-
-
-
-
-
+if __name__ == '__main__':
+    unittest.main()

@@ -15,7 +15,7 @@
 # along with this program.
 # If not, see <http://www.gnu.org/copyleft/lesser.html>.
 #
-# by Luca Francesca, 2014
+# by Luca Francesca, 2016
 
 from __future__ import print_function
 import feedparser
