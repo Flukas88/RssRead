@@ -1,6 +1,9 @@
 RssRead [![Build Status](https://travis-ci.org/Flukas88/RssRead.svg?branch=master)](https://travis-ci.org/Flukas88/RssRead)
 =======
 
+    Version 0.3.3
+     - Added unit tests
+     - Added travis support 
     Version 0.3.2
      - Added timestamps 
      - Moved to lxml for xml validation
