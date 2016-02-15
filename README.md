@@ -1,9 +1,10 @@
 RssRead [![Build Status](https://travis-ci.org/Flukas88/RssRead.svg?branch=master)](https://travis-ci.org/Flukas88/RssRead)
 =======
 
-    Version 0.3.3
+    Version 0.3.3-devel
      - Added unit tests
      - Added travis support 
+     - Added internal representation as JSON
     Version 0.3.2
      - Added timestamps 
      - Moved to lxml for xml validation
@@ -38,7 +39,12 @@ and then use the News property to get the news
         rss = feed.RssRead()
         rss.load(NAME)
         print(rss.News)
-  
+
+You could also print it as a *JSON* with a simple
+    
+        rss = feed.RssRead()
+        rss.load(NAME)
+        print(rss)
 
 In NAME you can use any of the configured* site.
 
@@ -56,4 +62,4 @@ You can use *VerifyConf.py* to verify your configuration
 
 **You can also customize the way news are outputed in the file, changing the standard
 
-    '<a href="%(site)s">%(title)s</a><br />'
+    <a href="%(site)s">%(title)s</a><br />
