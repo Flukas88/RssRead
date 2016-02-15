@@ -1,0 +1,58 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+ConfigurationError	RssRead.py	/^class ConfigurationError(Exception):$/;"	c
+FormatError	RssRead.py	/^class FormatError(KeyError):$/;"	c
+News	RssRead.py	/^    def News(self):$/;"	m	class:RssRead
+RegressionTest	Test.py	/^class RegressionTest(unittest.TestCase):$/;"	c
+RssConfValidate	RssConfValidate.py	/^class RssConfValidate:$/;"	c
+RssRead	RssRead.py	/^class RssRead:$/;"	c
+SiteError	RssRead.py	/^class SiteError(Exception):$/;"	c
+Valid	RssConfValidate.py	/^    def Valid(self):$/;"	m	class:RssConfValidate
+Valid	RssConfValidate.py	/^    def Valid(self, value):$/;"	m	class:RssConfValidate
+__init__	RssConfValidate.py	/^    def __init__(self, fileName='config.xml', fileConfig='config.xsd'):$/;"	m	class:RssConfValidate
+__init__	RssRead.py	/^    def __init__(self, fileName='config.xml'):$/;"	m	class:RssRead
+__init__	RssRead.py	/^    def __init__(self, value):$/;"	m	class:ConfigurationError
+__init__	RssRead.py	/^    def __init__(self, value):$/;"	m	class:FormatError
+__init__	RssRead.py	/^    def __init__(self, value):$/;"	m	class:SiteError
+__str__	RssRead.py	/^    def __str__(self):$/;"	m	class:ConfigurationError	file:
+__str__	RssRead.py	/^    def __str__(self):$/;"	m	class:FormatError	file:
+__str__	RssRead.py	/^    def __str__(self):$/;"	m	class:SiteError	file:
+_addSite	RssRead.py	/^    def _addSite(self, name, url, time=str(time.time())):$/;"	m	class:RssRead
+_loadConf	RssRead.py	/^    def _loadConf(self):$/;"	m	class:RssRead
+_loadFmtNews	RssRead.py	/^    def _loadFmtNews(self):$/;"	m	class:RssRead
+_removeSite	RssRead.py	/^    def _removeSite(self, site):$/;"	m	class:RssRead
+_safe_add	RssRead.py	/^    def _safe_add(self, site, url):$/;"	m	class:RssRead
+_safe_load	RssRead.py	/^    def _safe_load(self, site):$/;"	m	class:RssRead
+_safe_remove	RssRead.py	/^    def _safe_remove(self, site):$/;"	m	class:RssRead
+_validateConf	RssConfValidate.py	/^    def _validateConf(self):$/;"	m	class:RssConfValidate
+addSite	RssRead.py	/^    def addSite(self, site, url):$/;"	m	class:RssRead
+etree	RssConfValidate.py	/^from lxml import etree$/;"	i
+etree	RssRead.py	/^import xml.etree.cElementTree as etree$/;"	i
+feed	Test.py	/^import RssRead as feed$/;"	i
+feedparser	RssRead.py	/^import feedparser$/;"	i
+load	RssRead.py	/^    def load(self, site):$/;"	m	class:RssRead
+loadNewsRss	RssRead.py	/^    def loadNewsRss(self, site):$/;"	m	class:RssRead
+print_function	RssConfValidate.py	/^from __future__ import print_function$/;"	i
+print_function	RssRead.py	/^from __future__ import print_function$/;"	i
+re	RssRead.py	/^import re$/;"	i
+removeSite	RssRead.py	/^    def removeSite(self, site):$/;"	m	class:RssRead
+setUp	Test.py	/^    def setUp(self):$/;"	m	class:RegressionTest
+string	Test.py	/^import string$/;"	i
+test_add_site_twice	Test.py	/^    def test_add_site_twice(self):$/;"	m	class:RegressionTest
+test_already_present_site	Test.py	/^    def test_already_present_site(self):$/;"	m	class:RegressionTest
+test_configuration_loading	Test.py	/^    def test_configuration_loading(self):$/;"	m	class:RegressionTest
+test_fmt_loading_sintax	Test.py	/^    def test_fmt_loading_sintax(self):$/;"	m	class:RegressionTest
+test_loading_news	Test.py	/^    def test_loading_news(self):$/;"	m	class:RegressionTest
+test_remove_site_twice	Test.py	/^    def test_remove_site_twice(self):$/;"	m	class:RegressionTest
+test_unicode_except	Test.py	/^    def test_unicode_except(self):$/;"	m	class:RegressionTest
+time	RssRead.py	/^import time$/;"	i
+time	Test.py	/^import time $/;"	i
+tst	VerifyConf.py	/^tst = validate.RssConfValidate()$/;"	v
+unittest	Test.py	/^import unittest$/;"	i
+validate	RssRead.py	/^import RssConfValidate as validate$/;"	i
+validate	VerifyConf.py	/^import RssConfValidate as validate$/;"	i
+xml	RssRead.py	/^import xml.etree.cElementTree as etree$/;"	i
