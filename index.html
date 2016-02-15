@@ -35,6 +35,7 @@
 <pre><code>Version 0.3.3
  - Added unit tests
  - Added travis support 
+ - Added internal representation as JSON
 Version 0.3.2
  - Added timestamps 
  - Moved to lxml for xml validation
@@ -71,6 +72,13 @@ or as an integration for a personal script.
     print(rss.News)
 </code></pre>
 
+<p>You could also print it as a <em>JSON</em> with a simple</p>
+
+<pre><code>    rss = feed.RssRead()
+    rss.load(NAME)
+    print(rss)
+</code></pre>
+
 <p>In NAME you can use any of the configured* site.</p>
 
 <p>You can, of course, use multiple RssReader on the same program or you can load more news with the same instance (using each time the <em>load</em> function)
@@ -87,7 +95,7 @@ rss.removeSite('NAME')
 
 <p>**You can also customize the way news are outputed in the file, changing the standard</p>
 
-<pre><code>'&lt;a href="%(site)s"&gt;%(title)s&lt;/a&gt;&lt;br /&gt;'
+<pre><code>&lt;a href="%(site)s"&gt;%(title)s&lt;/a&gt;&lt;br /&gt;
 </code></pre>
       </section>
       <footer>
