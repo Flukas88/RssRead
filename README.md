@@ -62,4 +62,4 @@ You can use *VerifyConf.py* to verify your configuration
 
 **You can also customize the way news are outputed in the file, changing the standard
 
-    '<a href="%(site)s">%(title)s</a><br />'
+    <a href="%(site)s">%(title)s</a><br />
