@@ -44,7 +44,7 @@ class RegressionTest(unittest.TestCase):
 
     def test_unicode_except(self):
         try:
-            self.rss.loadNewsRss('torrent')
+            self.rss.loadNewsRss('python')
         except (UnicodeEncodeError, KeyError):
             self.fail('Unicode Error thrown, unexpected')
 
