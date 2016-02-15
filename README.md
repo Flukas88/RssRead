@@ -39,7 +39,12 @@ and then use the News property to get the news
         rss = feed.RssRead()
         rss.load(NAME)
         print(rss.News)
-  
+
+You could also print it as a *JSON* with a simple
+    
+        rss = feed.RssRead()
+        rss.load(NAME)
+        print(rss)
 
 In NAME you can use any of the configured* site.
 
