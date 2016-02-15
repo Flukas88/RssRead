@@ -87,7 +87,7 @@ class RssRead:
                                          agent='RssRead/0.3-devel +http://luca.lucafrancesca.me/')
             self._news = [self._fmt_news %
                           {"site": news.link.encode('utf-8'),
-                           "title": news.title.encode('utf-8')}
+                           "title": news.title.encode('utf-8').decode("utf-8", "ignore")}
                           for news in self.feed.entries]
         else:
             raise SiteError('Site not present')
