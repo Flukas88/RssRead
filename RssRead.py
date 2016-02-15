@@ -137,7 +137,7 @@ class RssRead:
         try:
             self._addSite(site, url)
         except (NameError, SiteError):
-            print('Already present')
+            pass #Already present
         except TypeError:
             print('Url missing')
             
@@ -148,13 +148,12 @@ class RssRead:
         try:
             self._removeSite(site)
         except (SiteError):
-            print('Not present')
+            pass # Not present'
         except (TypeError, NameError):
             pass
         
     def removeSite(self, site):
             self._safe_remove(site)
-
 
     def __str__(self):
         data=[]
