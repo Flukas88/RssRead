@@ -20,6 +20,7 @@
 from __future__ import print_function
 import feedparser
 import re
+import json
 import time
 import xml.etree.cElementTree as etree
 import RssConfValidate as validate
@@ -95,7 +96,7 @@ class RssRead:
     @property
     def News(self):
         return self._news
-
+    
     def _addSite(self, name, url, time=str(time.time())):
         """Configuration site adding method. The args are (name, url) """
         if name in self._siteConf:
@@ -153,3 +154,13 @@ class RssRead:
         
     def removeSite(self, site):
             self._safe_remove(site)
+
+
+    def __str__(self):
+        data=[]
+        data_id = 0
+        for news in self.feed.entries:
+            item = {data_id: [news.title, news.link]}
+            data.append(item)
+            data_id += 1
+        return json.dumps(data) 

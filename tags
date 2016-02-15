@@ -20,6 +20,7 @@ __init__	RssRead.py	/^    def __init__(self, value):$/;"	m	class:FormatError
 __init__	RssRead.py	/^    def __init__(self, value):$/;"	m	class:SiteError
 __str__	RssRead.py	/^    def __str__(self):$/;"	m	class:ConfigurationError	file:
 __str__	RssRead.py	/^    def __str__(self):$/;"	m	class:FormatError	file:
+__str__	RssRead.py	/^    def __str__(self):$/;"	m	class:RssRead	file:
 __str__	RssRead.py	/^    def __str__(self):$/;"	m	class:SiteError	file:
 _addSite	RssRead.py	/^    def _addSite(self, name, url, time=str(time.time())):$/;"	m	class:RssRead
 _loadConf	RssRead.py	/^    def _loadConf(self):$/;"	m	class:RssRead
@@ -34,6 +35,7 @@ etree	RssConfValidate.py	/^from lxml import etree$/;"	i
 etree	RssRead.py	/^import xml.etree.cElementTree as etree$/;"	i
 feed	Test.py	/^import RssRead as feed$/;"	i
 feedparser	RssRead.py	/^import feedparser$/;"	i
+json	RssRead.py	/^import json$/;"	i
 load	RssRead.py	/^    def load(self, site):$/;"	m	class:RssRead
 loadNewsRss	RssRead.py	/^    def loadNewsRss(self, site):$/;"	m	class:RssRead
 print_function	RssConfValidate.py	/^from __future__ import print_function$/;"	i
@@ -48,6 +50,7 @@ test_configuration_loading	Test.py	/^    def test_configuration_loading(self):$/
 test_fmt_loading_sintax	Test.py	/^    def test_fmt_loading_sintax(self):$/;"	m	class:RegressionTest
 test_loading_news	Test.py	/^    def test_loading_news(self):$/;"	m	class:RegressionTest
 test_remove_site_twice	Test.py	/^    def test_remove_site_twice(self):$/;"	m	class:RegressionTest
+test_site_not_present	Test.py	/^    def test_site_not_present(self):$/;"	m	class:RegressionTest
 test_unicode_except	Test.py	/^    def test_unicode_except(self):$/;"	m	class:RegressionTest
 time	RssRead.py	/^import time$/;"	i
 time	Test.py	/^import time $/;"	i
