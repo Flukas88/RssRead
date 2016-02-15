@@ -16,11 +16,6 @@
         <lastupdate>1402050214.958663</lastupdate>
     </site>
     <site>
-        <name>torrent</name>
-        <url>http://www.nyaa.eu/?page=rss&amp;term=dragonball</url>
-        <lastupdate>1402050214.958663</lastupdate>
-    </site>
-    <site>
         <name>python</name>
         <url>http://www.python.org/channews.rdf</url>
         <lastupdate>1402050257.320898</lastupdate>
