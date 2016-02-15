@@ -66,8 +66,13 @@ class RegressionTest(unittest.TestCase):
         try:
             self.rss.loadNewsRss('python')
         except (TypeError, feed.SiteError):
-            self.fail('Site not present exception thrown, expected')
+            self.fail('Site already present exception thrown, expected')
 
+    def test_site_not_present(self):
+        try:
+            self.rss.loadNewsRss('asdasd')
+        except (TypeError, feed.SiteError):
+            pass 
 
 if __name__ == '__main__':
     unittest.main()
