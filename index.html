@@ -4,46 +4,38 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
     <title>Rssread by Flukas88</title>
-    <link rel="stylesheet" href="stylesheets/styles.css">
-    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-    <script src="javascripts/main.js"></script>
-    <!--[if lt IE 9]>
-      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
 
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/github-light.css">
+    <meta name="viewport" content="width=device-width">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
   </head>
   <body>
-
+    <div class="wrapper">
       <header>
         <h1>Rssread</h1>
         <p>RssRead main repo</p>
+
+        <p class="view"><a href="https://github.com/Flukas88/RssRead">View the Project on GitHub <small>Flukas88/RssRead</small></a></p>
+
+
+        <ul>
+          <li><a href="https://github.com/Flukas88/RssRead/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/Flukas88/RssRead/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/Flukas88/RssRead">View On <strong>GitHub</strong></a></li>
+        </ul>
       </header>
-
-      <div id="banner">
-        <span id="logo"></span>
-
-        <a href="https://github.com/Flukas88/RssRead" class="button fork"><strong>View On GitHub</strong></a>
-        <div class="downloads">
-          <span>Downloads:</span>
-          <ul>
-            <li><a href="https://github.com/Flukas88/RssRead/zipball/master" class="button">ZIP</a></li>
-            <li><a href="https://github.com/Flukas88/RssRead/tarball/master" class="button">TAR</a></li>
-          </ul>
-        </div>
-      </div><!-- end banner -->
-
-    <div class="wrapper">
-      <nav>
-        <ul></ul>
-      </nav>
       <section>
         <h1>
-<a name="rssread" class="anchor" href="#rssread"><span class="octicon octicon-link"></span></a>RssRead</h1>
+<a id="rssread-" class="anchor" href="#rssread-" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>RssRead <a href="https://travis-ci.org/Flukas88/RssRead"><img src="https://travis-ci.org/Flukas88/RssRead.svg?branch=master" alt="Build Status"></a>
+</h1>
 
-<blockquote>
-<pre><code>Version 0.3.2
+<pre><code>Version 0.3.3
+ - Added unit tests
+ - Added travis support 
+Version 0.3.2
  - Added timestamps 
  - Moved to lxml for xml validation
  - Added compatibility for Python 3.4
@@ -62,7 +54,6 @@ Version 0.11
 Version 0.1
  - Initial use of Python class
 </code></pre>
-</blockquote>
 
 <p>Repo for RssRead, an experimental Python API for reading RSS wich offers a good codebase for a GUI program
 or as an integration for a personal script. 
@@ -70,7 +61,7 @@ or as an integration for a personal script.
 
 <p>It's a module you can use with a </p>
 
-<pre><code>  import RssRead as feed
+<pre><code>import RssRead as feed
 </code></pre>
 
 <p>and then use the News property to get the news</p>
@@ -90,21 +81,21 @@ You can use <em>VerifyConf.py</em> to verify your configuration</p>
 
 <p>*You can easly add/remove sites using the following syntax</p>
 
-<pre><code>   rss.addSite('NAME', 'URL')
-   rss.removeSite('NAME')
+<pre><code>rss.addSite('NAME', 'URL')
+rss.removeSite('NAME')
 </code></pre>
 
 <p>**You can also customize the way news are outputed in the file, changing the standard</p>
 
-<pre><code>  '&lt;a href="%(site)s"&gt;%(title)s&lt;/a&gt;&lt;br /&gt;'
+<pre><code>'&lt;a href="%(site)s"&gt;%(title)s&lt;/a&gt;&lt;br /&gt;'
 </code></pre>
       </section>
       <footer>
-        <p>Project maintained by <a href="https://github.com/Flukas88">Flukas88</a></p>
-        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://twitter.com/michigangraham">mattgraham</a></small></p>
+        <p>This project is maintained by <a href="https://github.com/Flukas88">Flukas88</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
       </footer>
     </div>
-    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+    <script src="javascripts/scale.fix.js"></script>
     
   </body>
 </html>
