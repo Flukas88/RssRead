@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <title>RssRead.py</title>
+  <link rel="stylesheet" href="pycco.css">
+</head>
+<body>
+<div id='container'>
+  <div id="background"></div>
+  <div class='section'>
+    <div class='docs'><h1>RssRead.py</h1></div>
+  </div>
+  <div class='clearall'>
+  <div class='section' id='section-0'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-0'>#</a>
+      </div>
+      <p>This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU LESSER GENERAL PUBLIC LICENSEG as
+published by the Free Software Foundation, either version 3 of the
+License, or (at your option) any later version.</p>
+<p>This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+GNU General Public License for more details.</p>
+<p>You should have received a copy of the GNU General Public License
+along with this program.
+If not, see <a href="http://www.gnu.org/copyleft/lesser.html">http://www.gnu.org/copyleft/lesser.html</a>.</p>
+<p>by Luca Francesca, 2016</p>
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">print_function</span>
+<span class="kn">import</span> <span class="nn">feedparser</span>
+<span class="kn">import</span> <span class="nn">re</span>
+<span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">import</span> <span class="nn">xml.etree.cElementTree</span> <span class="kn">as</span> <span class="nn">etree</span>
+<span class="kn">import</span> <span class="nn">RssConfValidate</span> <span class="kn">as</span> <span class="nn">validate</span></pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+  <div class='section' id='section-1'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-1'>#</a>
+      </div>
+      <p>Site error Exception Class</p>
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre><span class="k">class</span> <span class="nc">SiteError</span><span class="p">(</span><span class="ne">Exception</span><span class="p">):</span></pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+  <div class='section' id='section-2'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-2'>#</a>
+      </div>
+      
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre>    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="n">value</span></pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+  <div class='section' id='section-3'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-3'>#</a>
+      </div>
+      
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre>    <span class="k">def</span> <span class="nf">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">repr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="p">)</span></pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+  <div class='section' id='section-4'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-4'>#</a>
+      </div>
+      <p>Configuration Exception Class</p>
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre><span class="k">class</span> <span class="nc">ConfigurationError</span><span class="p">(</span><span class="ne">Exception</span><span class="p">):</span></pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+  <div class='section' id='section-5'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-5'>#</a>
+      </div>
+      
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre>    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="n">value</span></pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+  <div class='section' id='section-6'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-6'>#</a>
+      </div>
+      
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre>    <span class="k">def</span> <span class="nf">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">repr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="p">)</span></pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+  <div class='section' id='section-7'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-7'>#</a>
+      </div>
+      <p>Output Format  Exception Class</p>
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre><span class="k">class</span> <span class="nc">FormatError</span><span class="p">(</span><span class="ne">KeyError</span><span class="p">):</span></pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+  <div class='section' id='section-8'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-8'>#</a>
+      </div>
+      
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre>    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="n">value</span></pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+  <div class='section' id='section-9'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-9'>#</a>
+      </div>
+      
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre>    <span class="k">def</span> <span class="nf">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">repr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="p">)</span></pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+  <div class='section' id='section-10'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-10'>#</a>
+      </div>
+      <p>Default config.xml or pass it a customized one as parameter.</p>
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre><span class="k">class</span> <span class="nc">RssRead</span><span class="p">:</span></pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+  <div class='section' id='section-11'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-11'>#</a>
+      </div>
+      
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre>    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fileName</span><span class="o">=</span><span class="s1">&#39;config.xml&#39;</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_fileName</span> <span class="o">=</span> <span class="n">fileName</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_siteConf</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_news</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_tree</span> <span class="o">=</span> <span class="n">etree</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_fileName</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_Config</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tree</span><span class="o">.</span><span class="n">getroot</span><span class="p">()</span>
+        <span class="n">val</span> <span class="o">=</span> <span class="n">validate</span><span class="o">.</span><span class="n">RssConfValidate</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">val</span><span class="o">.</span><span class="n">Valid</span> <span class="ow">is</span> <span class="bp">False</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">ConfigurationError</span><span class="p">(</span><span class="s1">&#39;Configuration file is invalid&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_loadConf</span><span class="p">()</span></pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+  <div class='section' id='section-12'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-12'>#</a>
+      </div>
+      <p>Load news parameters and check output format</p>
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre>    <span class="k">def</span> <span class="nf">_loadFmtNews</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span></pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+  <div class='section' id='section-13'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-13'>#</a>
+      </div>
+      
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre>        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;format.data&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_fmt_news</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">fmt_regex</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s1">&#39;[\%\(site\)s]\s*[\%\(title\)s]&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">fmt_regex</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_fmt_news</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">fmt_regex</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">FormatError</span><span class="p">(</span><span class="s1">&#39;Format for news output is invalid&#39;</span><span class="p">)</span></pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+  <div class='section' id='section-14'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-14'>#</a>
+      </div>
+      <p>Configuration loading method</p>
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre>    <span class="k">def</span> <span class="nf">_loadConf</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span></pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+  <div class='section' id='section-15'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-15'>#</a>
+      </div>
+      
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre>        <span class="bp">self</span><span class="o">.</span><span class="n">_loadFmtNews</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_siteConf</span> <span class="o">=</span> <span class="p">{</span><span class="n">child</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;name&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">text</span> <span class="p">:</span> <span class="n">child</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;url&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">text</span>
+                                           <span class="k">for</span> <span class="n">child</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_Config</span><span class="p">}</span></pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+  <div class='section' id='section-16'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-16'>#</a>
+      </div>
+      <p>Load the news. You have to specify the site.</p>
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre>    <span class="k">def</span> <span class="nf">loadNewsRss</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">site</span><span class="p">):</span></pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+  <div class='section' id='section-17'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-17'>#</a>
+      </div>
+      
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre>        <span class="k">if</span> <span class="n">site</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_siteConf</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">feed</span> <span class="o">=</span> <span class="n">feedparser</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_siteConf</span><span class="p">[</span><span class="n">site</span><span class="p">],</span>
+                                         <span class="n">agent</span><span class="o">=</span><span class="s1">&#39;RssRead/0.3 +http://www.lucafrancesca.eu/&#39;</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_news</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">_fmt_news</span> <span class="o">%</span>
+                          <span class="p">{</span><span class="s2">&quot;site&quot;</span><span class="p">:</span> <span class="n">news</span><span class="o">.</span><span class="n">link</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">),</span>
+                           <span class="s2">&quot;title&quot;</span><span class="p">:</span> <span class="n">news</span><span class="o">.</span><span class="n">title</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)}</span>
+                          <span class="k">for</span> <span class="n">news</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">feed</span><span class="o">.</span><span class="n">entries</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">SiteError</span><span class="p">(</span><span class="s1">&#39;Site not present&#39;</span><span class="p">)</span></pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+  <div class='section' id='section-18'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-18'>#</a>
+      </div>
+      <p>Configuration site adding method. The args are (name, url)</p>
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre>    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">News</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_news</span>
+
+    <span class="k">def</span> <span class="nf">_addSite</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">time</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">())):</span></pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+  <div class='section' id='section-19'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-19'>#</a>
+      </div>
+      
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre>        <span class="k">if</span> <span class="n">name</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_siteConf</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">SiteError</span><span class="p">(</span><span class="s1">&#39;Site already present&#39;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">Site</span> <span class="o">=</span> <span class="n">etree</span><span class="o">.</span><span class="n">SubElement</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_Config</span><span class="p">,</span> <span class="s1">&#39;site&#39;</span><span class="p">)</span>
+            <span class="n">etree</span><span class="o">.</span><span class="n">SubElement</span><span class="p">(</span><span class="n">Site</span><span class="p">,</span> <span class="s1">&#39;name&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="n">name</span>
+            <span class="n">etree</span><span class="o">.</span><span class="n">SubElement</span><span class="p">(</span><span class="n">Site</span><span class="p">,</span> <span class="s1">&#39;url&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="n">url</span>
+            <span class="n">etree</span><span class="o">.</span><span class="n">SubElement</span><span class="p">(</span><span class="n">Site</span><span class="p">,</span> <span class="s1">&#39;lastupdate&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="n">time</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_tree</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_fileName</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">,</span>
+                             <span class="n">xml_declaration</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_siteConf</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">url</span></pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+  <div class='section' id='section-20'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-20'>#</a>
+      </div>
+      <p>Configuration site removing method. Just give it the site name</p>
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre>    <span class="k">def</span> <span class="nf">_removeSite</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">site</span><span class="p">):</span></pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+  <div class='section' id='section-21'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-21'>#</a>
+      </div>
+      
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre>        <span class="k">if</span> <span class="n">site</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_siteConf</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">Site</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_Config</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="s1">&#39;site&#39;</span><span class="p">):</span>
+                <span class="k">if</span> <span class="n">Site</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;name&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">text</span> <span class="o">==</span> <span class="n">site</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_Config</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">Site</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_tree</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_fileName</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">,</span>
+                             <span class="n">xml_declaration</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+            <span class="k">del</span> <span class="bp">self</span><span class="o">.</span><span class="n">_siteConf</span><span class="p">[</span><span class="n">site</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">SiteError</span><span class="p">(</span><span class="s1">&#39;Site already removed&#39;</span><span class="p">)</span></pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+  <div class='section' id='section-22'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-22'>#</a>
+      </div>
+      
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre>    <span class="k">def</span> <span class="nf">_safe_load</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">site</span><span class="p">):</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">loadNewsRss</span><span class="p">(</span><span class="n">site</span><span class="p">)</span>
+        <span class="k">except</span> <span class="n">SiteError</span><span class="p">:</span>
+            <span class="k">print</span><span class="p">(</span><span class="s1">&#39;Site not present!&#39;</span><span class="p">)</span>
+        <span class="k">except</span> <span class="p">(</span><span class="n">FormatError</span><span class="p">,</span> <span class="ne">KeyError</span><span class="p">,</span> <span class="ne">NameError</span><span class="p">):</span>
+            <span class="k">print</span><span class="p">(</span><span class="s1">&#39;Format invalid&#39;</span><span class="p">)</span></pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+  <div class='section' id='section-23'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-23'>#</a>
+      </div>
+      
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre>    <span class="k">def</span> <span class="nf">load</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">site</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_safe_load</span><span class="p">(</span><span class="n">site</span><span class="p">)</span></pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+  <div class='section' id='section-24'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-24'>#</a>
+      </div>
+      
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre>    <span class="k">def</span> <span class="nf">_safe_add</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">site</span><span class="p">,</span> <span class="n">url</span><span class="p">):</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_addSite</span><span class="p">(</span><span class="n">site</span><span class="p">,</span> <span class="n">url</span><span class="p">)</span>
+        <span class="k">except</span> <span class="p">(</span><span class="ne">NameError</span><span class="p">,</span> <span class="n">SiteError</span><span class="p">):</span>
+            <span class="k">print</span><span class="p">(</span><span class="s1">&#39;Already present&#39;</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">TypeError</span><span class="p">:</span>
+            <span class="k">print</span><span class="p">(</span><span class="s1">&#39;Url missing&#39;</span><span class="p">)</span></pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+  <div class='section' id='section-25'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-25'>#</a>
+      </div>
+      
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre>    <span class="k">def</span> <span class="nf">addSite</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">site</span><span class="p">,</span> <span class="n">url</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_safe_add</span><span class="p">(</span><span class="n">site</span><span class="p">,</span> <span class="n">url</span><span class="p">)</span></pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+  <div class='section' id='section-26'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-26'>#</a>
+      </div>
+      
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre>    <span class="k">def</span> <span class="nf">_safe_remove</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">site</span><span class="p">):</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_removeSite</span><span class="p">(</span><span class="n">site</span><span class="p">)</span>
+        <span class="k">except</span> <span class="p">(</span><span class="n">SiteError</span><span class="p">):</span>
+            <span class="k">print</span><span class="p">(</span><span class="s1">&#39;Not present&#39;</span><span class="p">)</span>
+        <span class="k">except</span> <span class="p">(</span><span class="ne">TypeError</span><span class="p">,</span> <span class="ne">NameError</span><span class="p">):</span>
+            <span class="k">pass</span></pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+  <div class='section' id='section-27'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-27'>#</a>
+      </div>
+      
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre>    <span class="k">def</span> <span class="nf">removeSite</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">site</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_safe_remove</span><span class="p">(</span><span class="n">site</span><span class="p">)</span>
+
+</pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+</div>
+</body>
