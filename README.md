@@ -24,7 +24,7 @@ RssRead [![Build Status](https://travis-ci.org/Flukas88/RssRead.svg?branch=maste
     Version 0.1
      - Initial use of Python class
 
-Repo for RssRead, an experimental Python API for reading RSS wich offers a good codebase for a GUI program
+Repo for RssRead, an experimental Python API for reading RSS which offers a good codebase for a GUI program
 or as an integration for a personal script. 
 [Python modules feedparser and lxml are *required*.]
 
