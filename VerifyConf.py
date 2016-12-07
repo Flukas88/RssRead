@@ -18,6 +18,8 @@
 #
 # by Luca Francesca, 2016
 
+from __future__ import absolute_import
+from __future__ import print_function
 import RssConfValidate as validate
 
 

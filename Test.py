@@ -18,6 +18,7 @@
 #
 # by Luca Francesca, 2016
 
+from __future__ import absolute_import
 import RssRead as feed
 import unittest
 import time 
