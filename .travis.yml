@@ -1,7 +1,5 @@
 language: python
 dist: trusty
-virtualenv:
-  system_site_packages: true
 python:
   - "2.7"
   - "3.4"
