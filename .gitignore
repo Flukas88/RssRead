@@ -1,3 +1,4 @@
 *.pyc
+*.pye
 __pycache__/
 generate_docs.bsh
