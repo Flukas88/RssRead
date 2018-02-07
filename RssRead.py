@@ -87,7 +87,7 @@ class RssRead:
         """Load the news. You have to specify the site."""
         if site in self._siteConf:
             self.feed = feedparser.parse(self._siteConf[site],
-                                         agent='RssRead/0.3.3 +http://luca.lucafrancesca.me/')
+                                         agent='RssRead/0.3.3 +https://lucafrancesca.me/')
             self._news = [self._fmt_news %
                           {"site": news.link.encode('utf-8'),
                            "title": news.title.encode('utf-8').decode("utf-8", "ignore")}
