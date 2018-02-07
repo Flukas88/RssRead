@@ -16,7 +16,7 @@
 # along with this program.
 # If not, see <http://www.gnu.org/copyleft/lesser.html>.
 #
-# by Luca Francesca, 2016
+# by Luca Francesca, 2017
 
 from __future__ import absolute_import
 from lxml import etree

@@ -16,17 +16,33 @@
 # along with this program.
 # If not, see <http://www.gnu.org/copyleft/lesser.html>.
 #
-# by Luca Francesca, 2017
+# by Luca Francesca, 2016
 
 from __future__ import absolute_import
-from __future__ import print_function
-import RssConfValidate as validate
+from lxml import etree
 
 
-tst = validate.RssConfValidate()
+class RssConfValidate:
+    def __init__(self, fileName='config.xml', fileConfig='config.xsd'):
+        self._fileName = fileName
+        self._fileConfig = fileConfig
+        self._valid = True
+        self.schema_f = etree.parse(fileConfig)
+        self._validateConf()
 
-if tst.Valid is True:
-    print("Valid configuration")
-else:
-    print("Invalid configuration")
+    def _validateConf(self):
+        schema = etree.XMLSchema(self.schema_f)
+        parser = etree.XMLParser(schema = schema)
+        with open(self._fileName) as f_source:
+            try:
+                doc = etree.parse(f_source, parser)
+            except etree.XMLSyntaxError:
+                self.Valid = False
 
+    @property
+    def Valid(self):
+        return self._valid
+
+    @Valid.setter
+    def Valid(self, value):
+        self._valid = value
