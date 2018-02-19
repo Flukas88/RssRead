@@ -1,4 +1,4 @@
-RssRead [![Build Status](https://travis-ci.org/Flukas88/RssRead.svg?branch=master)](https://travis-ci.org/Flukas88/RssRead)
+RssRead [![Build Status](https://travis-ci.org/Flukas88/RssRead.svg?branch=master)](https://travis-ci.org/Flukas88/RssRead)  [![codecov](https://codecov.io/gh/Flukas88/RssRead/branch/master/graph/badge.svg)](https://codecov.io/gh/Flukas88/RssRead)
 =======
 
     Version 0.3.3
